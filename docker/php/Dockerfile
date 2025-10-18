@@ -18,7 +18,7 @@ ENV XDEBUG_CLIENT_PORT 9003
 ENV XDEBUG_MODE dev,debug,coverage
 ENV XDEBUG_START_WITH_REQUEST off
 
-COPY docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN apk add --update \
     libc-dev \
