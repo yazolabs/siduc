@@ -30,12 +30,18 @@ services:
   php:
     <<: *php
     container_name: ieducar-php
-    command: sh -c "cp -r /var/www/ieducar-app/* /var/www/ieducar && tail -f /dev/null"
+    command: tail -f /dev/null
+    restart: always
+    depends_on: []
 
   fpm:
     <<: *php
     container_name: ieducar-fpm
-    command: sh -c "cp -r /var/www/ieducar-app/* /var/www/ieducar && php-fpm"
+    command: php-fpm
+    restart: always
+    depends_on:
+      - postgres
+      - redis
 
   horizon:
     <<: *php
