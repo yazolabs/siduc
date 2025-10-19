@@ -42,10 +42,9 @@ RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
     docker-php-ext-enable bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
     apk del .phpize_deps
 
-RUN ln -s /var/www/ieducar/artisan /usr/local/bin/artisan || true
-
 ARG HOST_UID=1000
 ARG HOST_GID=1000
+
 RUN addgroup -g ${HOST_GID} ieducar 2>/dev/null || true && \
     adduser -u ${HOST_UID} -G ieducar -s /bin/sh -D ieducar 2>/dev/null || true
 
