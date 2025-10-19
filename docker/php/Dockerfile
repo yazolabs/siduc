@@ -49,6 +49,8 @@ ARG HOST_GID=1000
 RUN addgroup -g ${HOST_GID} ieducar 2>/dev/null || true && \
     adduser -u ${HOST_UID} -G ieducar -s /bin/sh -D ieducar 2>/dev/null || true
 
+COPY --chown=ieducar:ieducar /var/www/ieducar-app /var/www/ieducar
+
 USER ieducar
 
 WORKDIR /var/www/ieducar

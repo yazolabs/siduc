@@ -9,7 +9,7 @@ x-php: &php
   image: php:8.4-ieducar
   working_dir: /var/www/ieducar
   volumes:
-    - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/app:/var/www/ieducar
+    - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/app:/var/www/ieducar-app
   links:
     - postgres
     - redis
@@ -31,17 +31,18 @@ services:
   php:
     <<: *php
     container_name: ieducar-php
-    command: tail -f /dev/null
+    command: sh -c "cp -r /var/www/ieducar-app/* /var/www/ieducar && tail -f /dev/null"
     depends_on: []
 
   fpm:
     <<: *php
     container_name: ieducar-fpm
+    command: sh -c "cp -r /var/www/ieducar-app/* /var/www/ieducar && php-fpm"
 
   horizon:
     <<: *php
     container_name: ieducar-horizon
-    command: /var/www/ieducar/artisan horizon
+    command: sh -c 'cp -r /var/www/ieducar-app/* /var/www/ieducar && php /var/www/ieducar/artisan horizon'
     restart: always
 
   nginx:
@@ -53,11 +54,12 @@ services:
       - fpm
     working_dir: /var/www/ieducar
     volumes:
-      - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/app:/var/www/ieducar
+      - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/app:/var/www/ieducar-app
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
       - ./docker/nginx/snippets:/etc/nginx/snippets/
     networks:
       - default
+    # ⬇️ Healthcheck atualizado
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 10s
