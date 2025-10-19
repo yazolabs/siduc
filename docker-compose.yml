@@ -9,7 +9,7 @@ x-php: &php
   image: php:8.4-ieducar
   working_dir: /var/www/ieducar
   volumes:
-    - ./:/var/www/ieducar
+    - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
   links:
     - postgres
     - redis
@@ -51,8 +51,19 @@ services:
       dockerfile: docker/nginx/Dockerfile
     depends_on:
       - fpm
+    working_dir: /var/www/ieducar
+    volumes:
+      - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./docker/nginx/snippets:/etc/nginx/snippets/
     networks:
       - default
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
 
   postgres:
     container_name: ieducar-postgres
@@ -75,4 +86,4 @@ services:
       - ${DOCKER_REDIS_PORT:-6379}:6379
 
 volumes:
-    postgres:
+  postgres:
