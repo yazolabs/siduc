@@ -51,8 +51,6 @@ services:
       dockerfile: docker/nginx/Dockerfile
     depends_on:
       - fpm
-    ports:
-      - "80:80"
     networks:
       - default
 
