@@ -9,7 +9,7 @@ x-php: &php
   image: php:8.4-ieducar
   working_dir: /var/www/ieducar
   volumes:
-    - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
+    - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/app:/var/www/ieducar
   links:
     - postgres
     - redis
@@ -53,7 +53,7 @@ services:
       - fpm
     working_dir: /var/www/ieducar
     volumes:
-      - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
+      - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/app:/var/www/ieducar
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
       - ./docker/nginx/snippets:/etc/nginx/snippets/
     networks:
