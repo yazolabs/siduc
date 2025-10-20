@@ -46,7 +46,7 @@ services:
   horizon:
     <<: *php
     container_name: ieducar-horizon
-    command: sh -c 'cp -r /var/www/ieducar-app/* /var/www/ieducar && php /var/www/ieducar/artisan horizon'
+    command: php /var/www/ieducar/artisan horizon
     restart: always
 
   nginx:
@@ -58,13 +58,12 @@ services:
       - fpm
     working_dir: /var/www/ieducar
     volumes:
-      - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
       - ./docker/nginx/snippets:/etc/nginx/snippets/
     networks:
       - default
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
+      test: ["CMD-SHELL", "wget -qO- http://localhost >/dev/null 2>&1 || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 3
