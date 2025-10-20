@@ -15,7 +15,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
 ENV XDEBUG_IDEKEY=xdebug \
     XDEBUG_CLIENT_HOST=127.0.0.1 \
     XDEBUG_CLIENT_PORT=9003 \
-    XDEBUG_MODE=dev,debug,coverage \
+    XDEBUG_MODE=off \
     XDEBUG_START_WITH_REQUEST=off
 
 COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
@@ -40,9 +40,8 @@ RUN apk add --no-cache \
  && apk del postgresql-dev
 
 RUN addgroup -g ${HOST_GID:-1001} ieducar 2>/dev/null || true && \
-    adduser -u ${HOST_UID:-1001} -G ieducar -s /bin/sh -D ieducar 2>/dev/null || true
-
-RUN mkdir -p /var/www/ieducar && \
+    adduser -u ${HOST_UID:-1001} -G ieducar -s /bin/sh -D ieducar 2>/dev/null || true && \
+    mkdir -p /var/www/ieducar && \
     chown -R ieducar:ieducar /var/www/ieducar
 
 USER ieducar
