@@ -73,8 +73,8 @@ services:
       - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
       - ./docker/nginx/snippets:/etc/nginx/snippets/
-    ports:
-      - "8080:80" # evita conflito com proxy padrão do Coolify
+    networks:
+      - default
     restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
