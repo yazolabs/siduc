@@ -34,10 +34,11 @@ RUN apk add --no-cache \
     git \
     curl \
     bash \
+ && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS make autoconf g++ gcc pkgconf \
  && docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip \
  && pecl install redis \
  && docker-php-ext-enable redis \
- && apk del postgresql-dev
+ && apk del .build-deps postgresql-dev
 
 RUN addgroup -g ${HOST_GID:-1001} ieducar 2>/dev/null || true && \
     adduser -u ${HOST_UID:-1001} -G ieducar -s /bin/sh -D ieducar 2>/dev/null || true && \
