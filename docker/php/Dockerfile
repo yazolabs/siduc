@@ -38,10 +38,8 @@ RUN apk add --no-cache \
     npm
 
 WORKDIR /var/www/ieducar
-
-COPY package*.json ./
-
-RUN npm install && npm run production
+COPY . .
+RUN npm install && npm run build
 
 RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
     pecl install redis xdebug && \
