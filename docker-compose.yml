@@ -31,25 +31,21 @@ services:
     <<: *php
     container_name: ieducar-php
     user: "0:0"
-    command: sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c 'tail -f /dev/null'"
+    command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"tail -f /dev/null\""'
     restart: always
-    depends_on: []
 
   fpm:
     <<: *php
     container_name: ieducar-fpm
     user: "0:0"
-    command: sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c 'php-fpm'"
+    command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"php-fpm\""'
     restart: always
-    depends_on:
-      - postgres
-      - redis
 
   horizon:
     <<: *php
     container_name: ieducar-horizon
     user: "0:0"
-    command: sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c 'php /var/www/ieducar/artisan horizon'"
+    command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"php /var/www/ieducar/artisan horizon\""'
     restart: always
 
   nginx:
