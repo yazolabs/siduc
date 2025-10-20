@@ -31,14 +31,14 @@ services:
   php:
     <<: *php
     container_name: ieducar-php
-    command: tail -f /dev/null
+    command: sh -c "chown -R 1001:1001 /var/www/ieducar && tail -f /dev/null"
     restart: always
     depends_on: []
 
   fpm:
     <<: *php
     container_name: ieducar-fpm
-    command: php-fpm
+    command: sh -c "chown -R 1001:1001 /var/www/ieducar && php-fpm"
     restart: always
     depends_on:
       - postgres
