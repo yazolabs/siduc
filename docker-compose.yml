@@ -63,7 +63,7 @@ services:
     networks:
       - default
     healthcheck:
-      test: ["CMD", "curl", "-fsSL", "http://localhost/ieducar/login || exit 0"]
+      test: ["CMD", "curl", "-fsSL", "http://localhost || exit 0"]
       interval: 10s
       timeout: 5s
       retries: 3
