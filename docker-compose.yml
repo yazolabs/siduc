@@ -8,11 +8,9 @@ x-php: &php
       HOST_GID: ${HOST_GID:-1001}
   image: php:8.4-ieducar
   working_dir: /var/www/ieducar
+  user: "0:0"
   volumes:
     - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
-  links:
-    - postgres
-    - redis
   depends_on:
     postgres:
       condition: service_started
@@ -30,23 +28,38 @@ services:
   php:
     <<: *php
     container_name: ieducar-php
-    user: "0:0"
     command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"tail -f /dev/null\""'
     restart: always
+    healthcheck:
+      test: ["CMD", "php", "-v"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
 
   fpm:
     <<: *php
     container_name: ieducar-fpm
-    user: "0:0"
     command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"php-fpm\""'
     restart: always
+    healthcheck:
+      test: ["CMD", "php", "-v"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
 
   horizon:
     <<: *php
     container_name: ieducar-horizon
-    user: "0:0"
     command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"php /var/www/ieducar/artisan horizon\""'
     restart: always
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "artisan horizon"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
 
   nginx:
     container_name: ieducar-nginx
@@ -60,8 +73,9 @@ services:
       - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
       - ./docker/nginx/snippets:/etc/nginx/snippets/
-    networks:
-      - default
+    ports:
+      - "8080:80" # evita conflito com proxy padrão do Coolify
+    restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 10s
@@ -76,11 +90,17 @@ services:
       POSTGRES_DB: ${DB_DATABASE}
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      PGUSER: ${DB_USERNAME}
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
       - ${DOCKER_POSTGRES_PORT:-5432}:5432
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres} -d ${DB_DATABASE:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   redis:
     container_name: ieducar-redis
@@ -88,6 +108,12 @@ services:
     restart: always
     ports:
       - ${DOCKER_REDIS_PORT:-6379}:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
 
 volumes:
   postgres:
