@@ -1,12 +1,13 @@
 FROM node:20-alpine AS assets
 WORKDIR /app
 
-COPY package.json vite.config.js ./
+COPY package.json yarn.lock vite.config.js ./
 COPY resources ./resources
 COPY public ./public
 
-ENV NODE_ENV=production
-RUN npm install && npm run build
+ENV NODE_ENV=development
+RUN yarn install --frozen-lockfile
+RUN yarn run build
 
 FROM nginx:1.28-alpine
 
@@ -22,4 +23,5 @@ RUN chmod -R 755 /var/www/ieducar && chown -R nginx:nginx /var/www/ieducar
 
 WORKDIR /var/www/ieducar/public
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
