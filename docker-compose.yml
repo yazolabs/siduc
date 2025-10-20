@@ -8,14 +8,16 @@ x-php: &php
       HOST_GID: ${HOST_GID:-1001}
   image: php:8.4-ieducar
   working_dir: /var/www/ieducar
-  user: "0:0"
   volumes:
     - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
+  links:
+    - postgres
+    - redis
   depends_on:
     postgres:
-      condition: service_healthy
+      condition: service_started
     redis:
-      condition: service_healthy
+      condition: service_started
   environment:
     CACHE_DRIVER: redis
     REDIS_HOST: redis
@@ -28,44 +30,24 @@ services:
   php:
     <<: *php
     container_name: ieducar-php
-    command: >
-      sh -c "chown -R 1001:1001 /var/www/ieducar &&
-             su ieducar -c 'tail -f /dev/null'"
+    command: tail -f /dev/null
     restart: always
-    healthcheck:
-      test: ["CMD", "php", "-v"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 20s
+    depends_on: []
 
   fpm:
     <<: *php
     container_name: ieducar-fpm
-    command: >
-      sh -c "chown -R 1001:1001 /var/www/ieducar &&
-             su ieducar -c 'php-fpm'"
+    command: php-fpm
     restart: always
-    healthcheck:
-      test: ["CMD", "php", "-v"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 20s
+    depends_on:
+      - postgres
+      - redis
 
   horizon:
     <<: *php
     container_name: ieducar-horizon
-    command: >
-      sh -c "chown -R 1001:1001 /var/www/ieducar &&
-             su ieducar -c 'php /var/www/ieducar/artisan horizon'"
+    command: sh -c 'cp -r /var/www/ieducar-app/* /var/www/ieducar && php /var/www/ieducar/artisan horizon'
     restart: always
-    healthcheck:
-      test: ["CMD", "pgrep", "-f", "artisan horizon"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 30s
 
   nginx:
     container_name: ieducar-nginx
@@ -73,8 +55,7 @@ services:
       context: .
       dockerfile: docker/nginx/Dockerfile
     depends_on:
-      fpm:
-        condition: service_healthy
+      - fpm
     working_dir: /var/www/ieducar
     volumes:
       - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
@@ -82,7 +63,6 @@ services:
       - ./docker/nginx/snippets:/etc/nginx/snippets/
     networks:
       - default
-    restart: always
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 10s
@@ -97,17 +77,11 @@ services:
       POSTGRES_DB: ${DB_DATABASE}
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGUSER: ${DB_USERNAME}
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
       - ${DOCKER_POSTGRES_PORT:-5432}:5432
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres} -d ${DB_DATABASE:-postgres}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
   redis:
     container_name: ieducar-redis
@@ -115,12 +89,6 @@ services:
     restart: always
     ports:
       - ${DOCKER_REDIS_PORT:-6379}:6379
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 20s
 
 volumes:
   postgres:
