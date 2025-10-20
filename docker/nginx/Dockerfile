@@ -1,9 +1,15 @@
 FROM nginx:1.28-alpine
 
+RUN apk add --no-cache nodejs npm
+
+WORKDIR /var/www/ieducar
+
+COPY . .
+
+RUN npm install && npm run build
+
 COPY ./docker/nginx/conf.d/ /etc/nginx/conf.d/
 COPY ./docker/nginx/snippets/ /etc/nginx/snippets/
-
-COPY ./public /var/www/ieducar/public
 
 RUN chmod -R 755 /var/www/ieducar && chown -R nginx:nginx /var/www/ieducar
 
