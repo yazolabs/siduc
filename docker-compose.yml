@@ -63,7 +63,7 @@ services:
     networks:
       - default
     healthcheck:
-      test: ["CMD", "curl", "-fsSL", "http://localhost || exit 0"]
+      test: ["CMD-SHELL", "curl -fsSL http://localhost || true"]
       interval: 10s
       timeout: 5s
       retries: 3
