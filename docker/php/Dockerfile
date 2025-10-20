@@ -33,21 +33,17 @@ RUN apk add --no-cache \
     openssh \
     git \
     curl \
-    bash
+    bash \
+ && docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip \
+ && pecl install redis \
+ && docker-php-ext-enable redis \
+ && apk del postgresql-dev
 
-RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
-    pecl install redis xdebug && \
-    docker-php-ext-enable redis xdebug && \
-    docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
-    docker-php-ext-enable bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
-    apk del .phpize_deps
-
-RUN addgroup -g ${HOST_GID} ieducar 2>/dev/null || true && \
-    adduser -u ${HOST_UID} -G ieducar -s /bin/sh -D ieducar 2>/dev/null || true
+RUN addgroup -g ${HOST_GID:-1001} ieducar 2>/dev/null || true && \
+    adduser -u ${HOST_UID:-1001} -G ieducar -s /bin/sh -D ieducar 2>/dev/null || true
 
 RUN mkdir -p /var/www/ieducar && \
     chown -R ieducar:ieducar /var/www/ieducar
 
 USER ieducar
-
 WORKDIR /var/www/ieducar

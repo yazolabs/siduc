@@ -13,9 +13,9 @@ x-php: &php
     - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
   depends_on:
     postgres:
-      condition: service_started
+      condition: service_healthy
     redis:
-      condition: service_started
+      condition: service_healthy
   environment:
     CACHE_DRIVER: redis
     REDIS_HOST: redis
@@ -28,7 +28,9 @@ services:
   php:
     <<: *php
     container_name: ieducar-php
-    command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"tail -f /dev/null\""'
+    command: >
+      sh -c "chown -R 1001:1001 /var/www/ieducar &&
+             su ieducar -c 'tail -f /dev/null'"
     restart: always
     healthcheck:
       test: ["CMD", "php", "-v"]
@@ -40,7 +42,9 @@ services:
   fpm:
     <<: *php
     container_name: ieducar-fpm
-    command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"php-fpm\""'
+    command: >
+      sh -c "chown -R 1001:1001 /var/www/ieducar &&
+             su ieducar -c 'php-fpm'"
     restart: always
     healthcheck:
       test: ["CMD", "php", "-v"]
@@ -52,7 +56,9 @@ services:
   horizon:
     <<: *php
     container_name: ieducar-horizon
-    command: 'sh -c "chown -R 1001:1001 /var/www/ieducar && su ieducar -c \"php /var/www/ieducar/artisan horizon\""'
+    command: >
+      sh -c "chown -R 1001:1001 /var/www/ieducar &&
+             su ieducar -c 'php /var/www/ieducar/artisan horizon'"
     restart: always
     healthcheck:
       test: ["CMD", "pgrep", "-f", "artisan horizon"]
@@ -67,7 +73,8 @@ services:
       context: .
       dockerfile: docker/nginx/Dockerfile
     depends_on:
-      - fpm
+      fpm:
+        condition: service_healthy
     working_dir: /var/www/ieducar
     volumes:
       - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
