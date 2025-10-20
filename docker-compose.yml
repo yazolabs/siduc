@@ -63,7 +63,7 @@ services:
     networks:
       - default
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost >/dev/null 2>&1 || exit 1"]
+      test: ["CMD", "curl", "-fsSL", "http://localhost/ieducar/login || exit 0"]
       interval: 10s
       timeout: 5s
       retries: 3
