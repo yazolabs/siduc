@@ -39,7 +39,12 @@ RUN apk add --no-cache \
 
 WORKDIR /var/www/ieducar
 COPY . .
-RUN npm install && npm run build
+RUN if [ "$SERVICE_NAME_PHP" = "php" ]; then \
+      echo "Building frontend with npm..."; \
+      npm install && npm run build; \
+    else \
+      echo "Skipping npm build for non-PHP container."; \
+    fi
 
 RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
     pecl install redis xdebug && \
