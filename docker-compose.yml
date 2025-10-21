@@ -90,4 +90,4 @@ services:
       - ${DOCKER_REDIS_PORT:-6379}:6379
 
 volumes:
-  postgres:
+  yazo_educacional_postgres_data:
