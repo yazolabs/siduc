@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="{{ url('favicon.ico') }}">
-    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - i-Educar</title>
+    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - Yazo Educacional</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="{{ Asset::get('intranet/styles/login.css') }}">
@@ -70,11 +70,14 @@
 </div>
 
 <div id="footer">
-    <div>
-        {!! config('legacy.config.ieducar_login_footer') !!}
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <span style="padding: 0px 10px">Adapted by</span> <img src="/img/logo-tagline.svg" alt="logo-yazo" style="width: 10%; height: 10%;">
     </div>
+    {{-- <div>
+        {!! config('legacy.config.ieducar_login_footer') !!}
+    </div> --}}
 
-    <div class="footer-social">
+    {{-- <div class="footer-social">
 
         {!! config('legacy.config.ieducar_external_footer') !!}
 
@@ -92,7 +95,7 @@
                 @endif
             </div>
         @endif
-    </div>
+    </div> --}}
 </div>
 
 </body>

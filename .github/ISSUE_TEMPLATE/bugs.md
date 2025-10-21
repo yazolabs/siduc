@@ -1,13 +1,13 @@
 ---
 name: Reportar um bug
-about: Encontrou um bug no i-Educar? Use este template!
+about: Encontrou um bug no Yazo Educacional? Use este template!
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-Olá e obrigado por nos ajudar a tornar o i-Educar um projeto mais estável. Não esqueça de revisar o nosso
+Olá e obrigado por nos ajudar a tornar o Yazo Educacional um projeto mais estável. Não esqueça de revisar o nosso
 [guia de contribuição](https://github.com/portabilis/i-educar/blob/master/CONTRIBUTING.md) para saber melhor como colaborar com a nossa comunidade. Para reportar seu bug use o template abaixo:
 
 **MENU:**

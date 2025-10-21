@@ -1,21 +1,21 @@
 {
-    "name": "portabilis/i-educar",
-    "description": "Software livre de gestão escolar",
+    "name": "yazolabs/yazo-educacional",
+    "description": "Software livre de gestão escolar da Yazo Labs, baseado no projeto da Portábilis/Yazo Educacional",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "version": "2.10.0",
     "keywords": [
-        "Portabilis",
-        "i-Educar"
+        "Yazo Labs",
+        "Yazo Educacional"
     ],
     "authors": [
         {
-            "name": "Portábilis",
-            "email": "contato@portabilis.com.br",
-            "homepage": "https://portabilis.com.br"
+            "name": "Yazo Labs",
+            "email": "yazolabs@gmail.com",
+            "homepage": "https://yazolabs.com.br"
         }
     ],
-    "homepage": "https://github.com/portabilis/i-educar",
+    "homepage": "https://github.com/yazolabs/yazo-educacional",
     "require": {
         "php": ">=8.3",
         "ext-gd": "*",

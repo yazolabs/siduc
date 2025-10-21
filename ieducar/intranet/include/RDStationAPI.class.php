@@ -29,7 +29,7 @@ class RDStationAPI
 
     public $apiVersion = '1.3';
 
-    public $defaultIdentifier = 'Usuário no produto i-Educar';
+    public $defaultIdentifier = 'Usuário no produto Yazo Educacional';
 
     public function __construct($privateToken = null, $token = null)
     {

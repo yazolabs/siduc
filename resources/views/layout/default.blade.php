@@ -7,7 +7,7 @@
     <meta http-equiv="Expires" content="-1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ url('favicon.ico') }}" />
-    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - i-Educar</title>
+    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - Yazo Educacional</title>
 
     <script>
         dataLayer = [{
@@ -101,7 +101,13 @@
         <td colspan="2">
             <header class="ieducar-header">
                 <div class="ieducar-header-logo">
-                    <h1><a href="{{ Asset::get('/') }}">i-Educar</a></h1>
+                    <h1 style="display: flex; align-items: center;">
+                        <a href="{{ Asset::get('/') }}" 
+                            style="display: flex; align-items: center; text-decoration: none; color: inherit; border-radius: 6px; transition: all 0.2s ease;">
+                            <img src="/img/logo.svg" alt="logo-yazo" style="width: 8%; height: 8%; padding-right: 10px;">
+                            Yazo Educacional
+                        </a>
+                    </h1>
                 </div>
                 <div class="ieducar-header-links">
                     <div class="dropdown">
