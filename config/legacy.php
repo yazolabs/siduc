@@ -66,7 +66,7 @@ return [
     ],
 
     'app' => [
-        'name' => env('APP_NAME', 'Yazo Educacional'),
+        'name' => env('APP_NAME', 'Educacional'),
         'diario' => [
             'nomenclatura_exame' => '0',
         ],
@@ -91,7 +91,7 @@ return [
                 'instituicao' => 'Prefeitura Municipal',
             ],
             'pdf' => [
-                'titulo' => 'Relatório Yazo Educacional',
+                'titulo' => 'Relatório Educacional',
                 'logo' => '',
             ],
             'layout' => 'login.tpl',

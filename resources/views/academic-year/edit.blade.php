@@ -180,7 +180,7 @@
                 <td class="formlttd" valign="top">
                     <span class="form">
                         <label for="informativo1-alocacoes-vinculos">
-                            Ao definir um novo ano letivo, o Yazo Educacional copia automaticamente as turmas do ano anterior. <br>
+                            Ao definir um novo ano letivo, o Educacional copia automaticamente as turmas do ano anterior. <br>
                             Gostaria de copiar também as alocações e vínculos?
                         </label>
                     </span>

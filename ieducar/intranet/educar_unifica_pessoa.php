@@ -18,7 +18,7 @@ return new class extends clsCadastro
 
     public function Formular()
     {
-        $this->titulo = 'Yazo Educacional - Unificação de pessoas';
+        $this->titulo = 'Educacional - Unificação de pessoas';
         $this->processoAp = '9998878';
 
         $this->breadcrumb(currentPage: 'Unificação de pessoas', breadcrumbs: [
