@@ -50,7 +50,8 @@
 <div id="main">
 
     <div>
-        <img alt="Logo" style="width: 150px" src="{{ config('legacy.config.ieducar_image') ?? url('intranet/imagens/brasao-republica.png') }}" >
+        <h1 style="font-size: 2.5rem; font-weight: 800;">Bem-vindo</h1>
+        {{-- <img alt="Logo" style="width: 150px" src="{{ config('legacy.config.ieducar_image') ?? url('intranet/imagens/brasao-republica.png') }}" > --}}
     </div>
 
     <h1>{{ config('legacy.config.ieducar_entity_name') }}</h1>
@@ -71,7 +72,8 @@
 
 <div id="footer">
     <div style="display: flex; align-items: center; justify-content: center;">
-        <span style="padding: 0px 10px">Adapted by</span> <img src="/img/logo-tagline.svg" alt="logo-yazo" style="width: 10%; height: 10%;">
+        {{-- <span style="padding: 0px 10px">Adapted by</span> <img src="/img/logo-tagline.svg" alt="logo-yazo" style="width: 10%; height: 10%;"> --}}
+        <span style="padding: 0px 10px"></span>
     </div>
     {{-- <div>
         {!! config('legacy.config.ieducar_login_footer') !!}

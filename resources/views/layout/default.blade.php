@@ -104,8 +104,9 @@
                     <h1 style="display: flex; align-items: center;">
                         <a href="{{ Asset::get('/') }}" 
                             style="display: flex; align-items: center; text-decoration: none; color: inherit; border-radius: 6px; transition: all 0.2s ease;">
-                            <img src="/img/logo.svg" alt="logo-yazo" style="width: 8%; height: 8%; padding-right: 10px;">
-                            Yazo Educacional
+                            {{-- <img src="/img/logo.svg" alt="logo-yazo" style="width: 8%; height: 8%; padding-right: 10px;"> --}}
+                            {{-- Yazo Educacional --}}
+                            Home
                         </a>
                     </h1>
                 </div>
