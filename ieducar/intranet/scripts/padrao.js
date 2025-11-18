@@ -19,7 +19,7 @@ function setFocus(campo)
 }
 
 /**
- * @TODO Remover função, chamadas no Yazo Educacional comentadas (código nunca invocado).
+ * @TODO Remover função, chamadas no i-Educar comentadas (código nunca invocado).
  *   Remover também o código legado que o referencia, funcionalidades inúteis.
  *   Ver: $ egrep -rn 'openurl[ ]{0,3}\(' intranet/
  */
@@ -29,7 +29,7 @@ function openurl(url)
 }
 
 /**
- * @TODO Remover função, chamadas no Yazo Educacional são em código legado em
+ * @TODO Remover função, chamadas no i-Educar são em código legado em
  *   funcionalidades inúteis.
  *   Ver: $ egrep -rn 'retorna[ ]{0,3}\(' intranet/
  */
@@ -47,7 +47,7 @@ function retorna(form, campo, valor)
 }
 
 /**
- * @TODO Remover função, chamadas no Yazo Educacional são em código legado em
+ * @TODO Remover função, chamadas no i-Educar são em código legado em
  *   funcionalidades inúteis.
  *   Ver: $ egrep -rn 'insereSubmit[ ]{0,3}\(' intranet/
  */
@@ -67,7 +67,7 @@ function insereSubmitLista()
 
 /**
  * @TODO Remover função após remover todos os arquivos legados não utilizados
- *   presentes no Yazo Educacional. Ver: $ egrep -rn 'excluirSumit[ ]{0,3}\(' intranet/
+ *   presentes no i-Educar. Ver: $ egrep -rn 'excluirSumit[ ]{0,3}\(' intranet/
  */
 function excluirSumit(id, nome_campo)
 {

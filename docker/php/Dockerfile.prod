@@ -1,0 +1,74 @@
+ARG PHP_VERSION=8.4
+ARG COMPOSER_VERSION=2.8
+
+FROM composer:${COMPOSER_VERSION} AS composer_builder
+WORKDIR /app
+COPY . /app
+
+RUN composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --no-interaction \
+    --prefer-dist
+
+FROM node:20-alpine AS node_builder
+WORKDIR /app
+
+COPY --from=composer_builder /app /app
+
+RUN npm install
+RUN npm run build || npm run prod || echo "No frontend build step detected"
+
+FROM php:${PHP_VERSION}-fpm-alpine AS php_runtime
+
+LABEL maintainer="Yazo Labs <contato@yazolabs.com.br>"
+
+RUN apk add --no-cache \
+    libc-dev \
+    libpng-dev \
+    libzip-dev \
+    linux-headers \
+    openjdk8 \
+    postgresql17-client \
+    postgresql-dev \
+    ttf-dejavu \
+    unzip \
+    git \
+    curl \
+    bash
+
+RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
+    docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip && \
+    docker-php-ext-enable bcmath gd pcntl pdo pdo_pgsql pgsql zip && \
+    apk del .phpize_deps
+
+RUN docker-php-ext-install opcache
+COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
+RUN addgroup -g 1000 ieducar && \
+    adduser -G ieducar -g ieducar -s /bin/sh -D ieducar
+
+USER ieducar
+WORKDIR /var/www/ieducar
+
+COPY --chown=ieducar:ieducar --from=node_builder /app /var/www/ieducar
+
+COPY --chown=ieducar:ieducar --from=composer_builder /app/vendor /var/www/ieducar/vendor
+COPY --chown=ieducar:ieducar --from=node_builder /app/public /var/www/ieducar/public
+
+RUN php artisan config:clear || true && \
+    php artisan cache:clear || true && \
+    php artisan view:clear || true && \
+    php artisan route:clear || true
+
+RUN php artisan config:cache || true && \
+    php artisan route:cache || true && \
+    php artisan view:cache || true
+
+
+RUN mkdir -p storage bootstrap/cache && \
+    chmod -R 775 storage bootstrap/cache && \
+    chown -R ieducar:ieducar storage bootstrap/cache
+
+EXPOSE 9000
+CMD ["php-fpm"]

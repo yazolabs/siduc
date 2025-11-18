@@ -1,23 +1,16 @@
 x-php: &php
   build:
-    context: docker/php
+    context: .
+    dockerfile: docker/php/Dockerfile.dev
     args:
       PHP_VERSION: 8.4
       COMPOSER_VERSION: 2.8
       HOST_UID: ${HOST_UID:-1001}
       HOST_GID: ${HOST_GID:-1001}
-  image: php:8.4-ieducar
   working_dir: /var/www/ieducar
-  volumes:
-    - /data/coolify/applications/${COOLIFY_APP_ID:-nwww8scccc84c04s0okck8kg}/:/var/www/ieducar
   links:
     - postgres
     - redis
-  depends_on:
-    postgres:
-      condition: service_started
-    redis:
-      condition: service_started
   environment:
     CACHE_DRIVER: redis
     REDIS_HOST: redis
@@ -31,8 +24,7 @@ services:
     <<: *php
     container_name: ieducar-php
     command: tail -f /dev/null
-    restart: always
-    depends_on: []
+    restart: none
     volumes:
       - ./:/var/www/ieducar
 
@@ -40,10 +32,7 @@ services:
     <<: *php
     container_name: ieducar-fpm
     command: php-fpm
-    restart: always
-    depends_on:
-      - postgres
-      - redis
+    restart: none
     volumes:
       - ./:/var/www/ieducar
 
@@ -51,24 +40,22 @@ services:
     <<: *php
     container_name: ieducar-horizon
     command: php /var/www/ieducar/artisan horizon
-    restart: always
+    restart: none
     volumes:
       - ./:/var/www/ieducar
 
   nginx:
     container_name: ieducar-nginx
-    build:
-      context: .
-      dockerfile: docker/nginx/Dockerfile
-    depends_on:
-      - fpm
+    image: nginx:1.28-alpine
     working_dir: /var/www/ieducar
     volumes:
-      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
-      - ./docker/nginx/snippets:/etc/nginx/snippets/
       - ./:/var/www/ieducar
-    networks:
-      - default
+      - ./docker/nginx/conf.d/dev:/etc/nginx/conf.d/
+      - ./docker/nginx/snippets/dev:/etc/nginx/snippets/
+    ports:
+      - "80:80"
+    depends_on:
+      - fpm
     healthcheck:
       test: ["CMD-SHELL", "curl -fsSL http://localhost || true"]
       interval: 10s
@@ -77,7 +64,7 @@ services:
       start_period: 30s
 
   postgres:
-    container_name: yazo-educacional-postgres
+    container_name: ieducar-postgres
     image: postgres:17-alpine
     environment:
       POSTGRES_DB: ${DB_DATABASE}
@@ -85,16 +72,16 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       PGUSER: ${DB_USERNAME}
     volumes:
-      - yazo_educacional_postgres_data:/var/lib/postgresql/data
+      - ieducar_postgres_data:/var/lib/postgresql/data
     ports:
       - "5442:5432"
 
   redis:
     container_name: ieducar-redis
     image: redis:8-alpine
-    restart: always
+    restart: none
     ports:
       - ${DOCKER_REDIS_PORT:-6379}:6379
 
 volumes:
-  yazo_educacional_postgres_data:
+  ieducar_postgres_data:
