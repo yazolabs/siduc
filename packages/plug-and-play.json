@@ -1,0 +1,315 @@
+{
+    "name": "yazolabs/yazo-educacional",
+    "description": "Software livre de gestão escolar da Yazo Labs, baseado no projeto da Portábilis/Yazo Educacional",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "version": "2.10.0",
+    "keywords": [
+        "Yazo Labs",
+        "Yazo Educacional"
+    ],
+    "authors": [
+        {
+            "name": "Yazo Labs",
+            "email": "yazolabs@gmail.com",
+            "homepage": "https://yazolabs.com.br"
+        }
+    ],
+    "homepage": "https://github.com/yazolabs/yazo-educacional",
+    "require": {
+        "php": ">=8.3",
+        "ext-gd": "*",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-pgsql": "*",
+        "ext-zip": "*",
+        "ankurk91/laravel-eloquent-relationships": "2.2.2",
+        "aws/aws-sdk-php-laravel": "3.10.0",
+        "composer/semver": "3.4.4",
+        "dex/composer-plug-and-play": "0.24.0",
+        "dex/frontier": "0.16.0",
+        "google/recaptcha": "1.3.1",
+        "guzzlehttp/guzzle": "7.10.0",
+        "honeybadger-io/honeybadger-laravel": "v4.7.0",
+        "intervention/image": "2.7.2",
+        "laravel/framework": "v12.38.1",
+        "laravel/horizon": "v5.40.0",
+        "laravel/sanctum": "v4.2.0",
+        "laravel/socialite": "v5.23.1",
+        "laravel/tinker": "v2.10.1",
+        "laravel/ui": "v4.6.1",
+        "league/csv": "9.27.1",
+        "league/flysystem-aws-s3-v3": "3.30.1",
+        "league/flysystem-ftp": "3.29.0",
+        "league/flysystem-sftp-v3": "3.30.0",
+        "maatwebsite/excel": "3.1.67",
+        "phpoffice/phpspreadsheet": "1.30.1",
+        "predis/predis": "v2.4.1",
+        "psr/simple-cache": "3.0.0",
+        "socialiteproviders/laravelpassport": "4.3.0",
+        "staudenmeir/laravel-adjacency-list": "v1.25.2",
+        "symfony/http-client": "v6.4.28",
+        "symfony/mailgun-mailer": "v6.4.24",
+        "aws/aws-crt-php": "v1.2.7",
+        "aws/aws-sdk-php": "3.360.0",
+        "brick/math": "0.14.0",
+        "carbonphp/carbon-doctrine-types": "3.2.0",
+        "composer/pcre": "3.3.2",
+        "dflydev/dot-access-data": "v3.0.3",
+        "doctrine/inflector": "2.1.0",
+        "doctrine/lexer": "3.0.1",
+        "dragonmantank/cron-expression": "v3.6.0",
+        "egulias/email-validator": "4.0.4",
+        "ezyang/htmlpurifier": "v4.19.0",
+        "firebase/php-jwt": "v6.11.1",
+        "fruitcake/php-cors": "v1.3.0",
+        "graham-campbell/result-type": "v1.1.3",
+        "guzzlehttp/promises": "2.3.0",
+        "guzzlehttp/psr7": "2.8.0",
+        "guzzlehttp/uri-template": "v1.0.5",
+        "honeybadger-io/honeybadger-php": "v2.25.0",
+        "laravel/prompts": "v0.3.7",
+        "laravel/serializable-closure": "v2.0.6",
+        "league/commonmark": "2.7.1",
+        "league/config": "v1.2.0",
+        "league/flysystem": "3.30.2",
+        "league/flysystem-local": "3.30.2",
+        "league/mime-type-detection": "1.16.0",
+        "league/oauth1-client": "v1.11.0",
+        "league/uri": "7.5.1",
+        "league/uri-interfaces": "7.5.0",
+        "maennchen/zipstream-php": "3.2.0",
+        "markbaker/complex": "3.0.2",
+        "markbaker/matrix": "3.0.1",
+        "monolog/monolog": "3.9.0",
+        "mtdowling/jmespath.php": "2.8.0",
+        "nesbot/carbon": "3.10.3",
+        "nette/schema": "v1.3.3",
+        "nette/utils": "v4.0.8",
+        "nikic/php-parser": "v5.6.2",
+        "nunomaduro/termwind": "v2.3.2",
+        "paragonie/constant_time_encoding": "v3.1.3",
+        "paragonie/random_compat": "v9.99.100",
+        "phpoption/phpoption": "1.9.4",
+        "phpseclib/phpseclib": "3.0.47",
+        "psr/clock": "1.0.0",
+        "psr/container": "2.0.2",
+        "psr/event-dispatcher": "1.0.0",
+        "psr/http-client": "1.0.3",
+        "psr/http-factory": "1.1.0",
+        "psr/http-message": "2.0",
+        "psr/log": "3.0.2",
+        "psy/psysh": "v0.12.14",
+        "ralouphie/getallheaders": "3.0.3",
+        "ramsey/collection": "2.1.1",
+        "ramsey/uuid": "4.9.1",
+        "sixlive/dotenv-editor": "v2.1.0",
+        "socialiteproviders/manager": "v4.8.1",
+        "staudenmeir/eloquent-has-many-deep-contracts": "v1.3",
+        "staudenmeir/laravel-cte": "v1.12.4",
+        "symfony/clock": "v7.3.0",
+        "symfony/console": "v7.3.6",
+        "symfony/css-selector": "v7.3.6",
+        "symfony/deprecation-contracts": "v3.6.0",
+        "symfony/error-handler": "v7.3.6",
+        "symfony/event-dispatcher": "v7.3.3",
+        "symfony/event-dispatcher-contracts": "v3.6.0",
+        "symfony/finder": "v7.3.5",
+        "symfony/http-client-contracts": "v3.6.0",
+        "symfony/http-foundation": "v7.3.7",
+        "symfony/http-kernel": "v7.3.7",
+        "symfony/mailer": "v7.3.5",
+        "symfony/mime": "v7.3.4",
+        "symfony/polyfill-ctype": "v1.33.0",
+        "symfony/polyfill-intl-grapheme": "v1.33.0",
+        "symfony/polyfill-intl-idn": "v1.33.0",
+        "symfony/polyfill-intl-normalizer": "v1.33.0",
+        "symfony/polyfill-mbstring": "v1.33.0",
+        "symfony/polyfill-php80": "v1.33.0",
+        "symfony/polyfill-php83": "v1.33.0",
+        "symfony/polyfill-php84": "v1.33.0",
+        "symfony/polyfill-php85": "v1.33.0",
+        "symfony/polyfill-uuid": "v1.33.0",
+        "symfony/process": "v7.3.4",
+        "symfony/routing": "v7.3.6",
+        "symfony/service-contracts": "v3.6.1",
+        "symfony/string": "v7.3.4",
+        "symfony/translation": "v7.3.4",
+        "symfony/translation-contracts": "v3.6.1",
+        "symfony/uid": "v7.3.1",
+        "symfony/var-dumper": "v7.3.5",
+        "tijsverkoyen/css-to-inline-styles": "v2.3.0",
+        "vlucas/phpdotenv": "v5.6.2",
+        "voku/portable-ascii": "2.0.3",
+        "portabilis/pre-matricula-digital": "@dev",
+        "portabilis/i-educar-educacenso-package": "@dev",
+        "portabilis/i-educar-transport-package": "@dev",
+        "portabilis/i-educar-library-package": "@dev",
+        "portabilis/i-educar-reports-package": "@dev"
+    },
+    "require-dev": {
+        "fakerphp/faker": "v1.24.1",
+        "laravel/pint": "v1.25.1",
+        "laravel/sail": "v1.48.0",
+        "laravel/telescope": "v5.15.0",
+        "mockery/mockery": "1.6.12",
+        "nunomaduro/collision": "v8.8.2",
+        "pestphp/pest": "v4.1.3",
+        "spatie/laravel-ignition": "2.9.1",
+        "symfony/yaml": "v7.3.5",
+        "brianium/paratest": "v7.14.2",
+        "doctrine/deprecations": "1.1.5",
+        "fidry/cpu-core-counter": "1.3.0",
+        "filp/whoops": "2.18.4",
+        "hamcrest/hamcrest-php": "v2.1.1",
+        "jean85/pretty-package-versions": "2.1.1",
+        "myclabs/deep-copy": "1.13.4",
+        "pestphp/pest-plugin": "v4.0.0",
+        "pestphp/pest-plugin-arch": "v4.0.0",
+        "pestphp/pest-plugin-mutate": "v4.0.1",
+        "pestphp/pest-plugin-profanity": "v4.2.0",
+        "phar-io/manifest": "2.0.4",
+        "phar-io/version": "3.2.1",
+        "phpdocumentor/reflection-common": "2.2.0",
+        "phpdocumentor/reflection-docblock": "5.6.3",
+        "phpdocumentor/type-resolver": "1.10.0",
+        "phpstan/phpdoc-parser": "2.3.0",
+        "phpunit/php-code-coverage": "12.4.0",
+        "phpunit/php-file-iterator": "6.0.0",
+        "phpunit/php-invoker": "6.0.0",
+        "phpunit/php-text-template": "5.0.0",
+        "phpunit/php-timer": "8.0.0",
+        "phpunit/phpunit": "12.4.1",
+        "sebastian/cli-parser": "4.2.0",
+        "sebastian/comparator": "7.1.3",
+        "sebastian/complexity": "5.0.0",
+        "sebastian/diff": "7.0.0",
+        "sebastian/environment": "8.0.3",
+        "sebastian/exporter": "7.0.2",
+        "sebastian/global-state": "8.0.2",
+        "sebastian/lines-of-code": "4.0.0",
+        "sebastian/object-enumerator": "7.0.0",
+        "sebastian/object-reflector": "5.0.0",
+        "sebastian/recursion-context": "7.0.1",
+        "sebastian/type": "6.0.3",
+        "sebastian/version": "6.0.0",
+        "spatie/backtrace": "1.8.1",
+        "spatie/error-solutions": "1.1.3",
+        "spatie/flare-client-php": "1.10.1",
+        "spatie/ignition": "1.15.1",
+        "staabm/side-effects-detector": "1.0.5",
+        "ta-tikoma/phpunit-architecture-test": "0.8.5",
+        "theseer/tokenizer": "1.3.1",
+        "webmozart/assert": "1.12.1"
+    },
+    "autoload": {
+        "classmap": [
+            "ieducar/intranet/include",
+            "ieducar/lib",
+            "ieducar/modules/*/Model",
+            "ieducar/modules/Avaliacao/Service",
+            "ieducar/modules/Avaliacao/Views",
+            "ieducar/modules/FormulaMedia/Validate",
+            "ieducar/modules/RegraAvaliacao/Validators"
+        ],
+        "files": [
+            "ieducar/intranet/include/funcoes.inc.php"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Custom\\": "database/custom/",
+            "Database\\Seeders\\": "database/seeders/",
+            "iEducar\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        },
+        "classmap": [
+            "tests/Unit"
+        ]
+    },
+    "include-path": [
+        "ieducar",
+        "ieducar/intranet",
+        "ieducar/lib",
+        "ieducar/modules"
+    ],
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "laravel/telescope"
+            ]
+        }
+    },
+    "scripts": {
+        "format": "vendor/bin/pint",
+        "openapi": "vendor/uderline/openapi-php-attributes/opag tests public/openapi.json",
+        "set-permissions": "find bootstrap/cache -type d -exec chmod 777 {} + && find storage -type d -exec chmod 777 {} +",
+        "new-install": [
+            "@composer install",
+            "@composer plug-and-play",
+            "@set-permissions",
+            "@php artisan key:generate --ansi",
+            "@php artisan storage:link --ansi",
+            "@php artisan migrate --force --ansi"
+        ],
+        "update-install": [
+            "@composer update",
+            "@composer plug-and-play",
+            "@set-permissions",
+            "@php artisan storage:link --ansi",
+            "@php artisan migrate --force --ansi"
+        ],
+        "post-install-cmd": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "dex/composer-plug-and-play": true,
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/portabilis/i-educar-educacenso-package",
+            "symlink": true
+        },
+        {
+            "type": "path",
+            "url": "./packages/portabilis/i-educar-library-package",
+            "symlink": true
+        },
+        {
+            "type": "path",
+            "url": "./packages/portabilis/i-educar-reports-package",
+            "symlink": true
+        },
+        {
+            "type": "path",
+            "url": "./packages/portabilis/i-educar-transport-package",
+            "symlink": true
+        },
+        {
+            "type": "path",
+            "url": "./packages/portabilis/pre-matricula-digital",
+            "symlink": true
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "require": {
+        "portabilis/pre-matricula-digital": "*",
+        "portabilis/i-educar-educacenso-package": "*",
+        "portabilis/i-educar-transport-package": "*"
+    }
+}

@@ -2,8 +2,8 @@
 /database/backups
 /database/data
 /database/migrations/extras
-/packages/*
-!packages/portabilis/
+/packages/*/node_modules
+/packages/*/vendor
 /public/modules
 /public/vendor/legacy/Reports
 /docker/jasper/
