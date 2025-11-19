@@ -3,6 +3,7 @@
 /database/data
 /database/migrations/extras
 /packages/*
+!packages/portabilis/
 /public/modules
 /public/vendor/legacy/Reports
 /docker/jasper/
