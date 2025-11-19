@@ -14,7 +14,7 @@ RUN composer install \
 FROM node:20-alpine AS node_builder
 WORKDIR /app
 
-COPY package.json package-lock.json yarn.lock* ./
+COPY package.json yarn.lock* ./
 RUN [ -f package.json ] && yarn install --frozen-lockfile || true
 
 COPY . .
