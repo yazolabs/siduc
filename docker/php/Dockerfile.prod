@@ -14,10 +14,11 @@ RUN composer install \
 FROM node:20-alpine AS node_builder
 WORKDIR /app
 
-COPY --from=composer_builder /app /app
+COPY package.json package-lock.json yarn.lock* ./
+RUN [ -f package.json ] && yarn install --frozen-lockfile || true
 
-RUN npm install
-RUN npm run build || npm run prod || echo "No frontend build step detected"
+COPY . .
+RUN [ -f vite.config.js ] && yarn build || echo "No Frontend build step found"
 
 FROM php:${PHP_VERSION}-fpm-alpine AS php_runtime
 
@@ -51,10 +52,9 @@ RUN addgroup -g 1000 ieducar && \
 USER ieducar
 WORKDIR /var/www/ieducar
 
-COPY --chown=ieducar:ieducar --from=node_builder /app /var/www/ieducar
-
+COPY --chown=ieducar:ieducar . /var/www/ieducar
 COPY --chown=ieducar:ieducar --from=composer_builder /app/vendor /var/www/ieducar/vendor
-COPY --chown=ieducar:ieducar --from=node_builder /app/public /var/www/ieducar/public
+COPY --chown=ieducar:ieducar --from=node_builder /app/public/build /var/www/ieducar/public/build
 
 RUN php artisan config:clear || true && \
     php artisan cache:clear || true && \
@@ -64,7 +64,6 @@ RUN php artisan config:clear || true && \
 RUN php artisan config:cache || true && \
     php artisan route:cache || true && \
     php artisan view:cache || true
-
 
 RUN mkdir -p storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache && \

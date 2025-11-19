@@ -83,5 +83,15 @@ services:
     ports:
       - ${DOCKER_REDIS_PORT:-6379}:6379
 
+  pmd:
+    container_name: ieducar-pmd
+    image: node:22-alpine
+    command: yarn dev --host 0.0.0.0
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./packages/portabilis/pre-matricula-digital:/var/www/pre-matricula-digital
+    working_dir: /var/www/pre-matricula-digital
+
 volumes:
   ieducar_postgres_data:
