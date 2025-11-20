@@ -1,6 +1,7 @@
 ARG PHP_VERSION=8.4
 ARG COMPOSER_VERSION=2.8
 
+FROM composer:${COMPOSER_VERSION} AS composer_source
 FROM php:${PHP_VERSION}-fpm-alpine AS composer_builder
 WORKDIR /app
 
@@ -15,7 +16,7 @@ RUN apk add --no-cache \
 
 RUN docker-php-ext-install gd zip pdo pdo_pgsql pgsql pcntl
 
-COPY --from=composer:${COMPOSER_VERSION} /usr/bin/composer /usr/bin/composer
+COPY --from=composer_source /usr/bin/composer /usr/bin/composer
 
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader --no-interaction
