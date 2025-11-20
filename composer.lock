@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "742658dbe7222a2d17324b965402761d",
+    "content-hash": "99f20699771ae525d6ca782f9a2e9380",
     "packages": [
         {
             "name": "ankurk91/laravel-eloquent-relationships",
@@ -572,57 +572,6 @@
                 }
             ],
             "time": "2025-08-20T19:15:30+00:00"
-        },
-        {
-            "name": "dex/composer-plug-and-play",
-            "version": "0.24.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/edersoares/composer-plug-and-play.git",
-                "reference": "92193851920a63e484d62f211e7733ce2b858106"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/edersoares/composer-plug-and-play/zipball/92193851920a63e484d62f211e7733ce2b858106",
-                "reference": "92193851920a63e484d62f211e7733ce2b858106",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^2.3",
-                "ext-json": "*",
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "composer/composer": "^2.3.0",
-                "laravel/pint": "^1.7",
-                "pestphp/pest": "^2.34"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Dex\\Composer\\PlugAndPlay\\PlugAndPlayPlugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Dex\\Composer\\PlugAndPlay\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Eder Soares",
-                    "email": "edersoares@me.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Plug and play packages for Composer",
-            "support": {
-                "issues": "https://github.com/edersoares/composer-plug-and-play/issues",
-                "source": "https://github.com/edersoares/composer-plug-and-play/tree/0.24.0"
-            },
-            "time": "2024-10-03T11:43:18+00:00"
         },
         {
             "name": "dex/frontier",
