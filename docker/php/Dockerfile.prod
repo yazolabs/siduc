@@ -5,10 +5,9 @@ FROM composer:${COMPOSER_VERSION} AS composer_builder
 WORKDIR /app
 
 COPY composer.json composer.lock ./
-RUN composer install \
-    --no-scripts \
-    --prefer-dist \
-    --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+COPY . .
 
 FROM node:20-alpine AS node_builder
 WORKDIR /app
@@ -49,13 +48,26 @@ RUN addgroup -g 1000 ieducar && \
 
 WORKDIR /var/www/ieducar
 
-COPY --chown=ieducar:ieducar . .
+COPY --chown=ieducar:ieducar \
+    artisan \
+    composer.json \
+    composer.lock \
+    package.json \
+    vite.config.js \
+    phpunit.xml \
+    server.php \
+    ./
 
-RUN composer install \
-    --no-dev \
-    --prefer-dist \
-    --no-interaction \
-    --optimize-autoloader
+COPY --chown=ieducar:ieducar app ./app
+COPY --chown=ieducar:ieducar bootstrap ./bootstrap
+COPY --chown=ieducar:ieducar config ./config
+COPY --chown=ieducar:ieducar database ./database
+COPY --chown=ieducar:ieducar public ./public
+COPY --chown=ieducar:ieducar resources ./resources
+COPY --chown=ieducar:ieducar routes ./routes
+COPY --chown=ieducar:ieducar storage ./storage
+
+COPY --from=composer_builder /app/vendor ./vendor
 
 COPY --from=node_builder --chown=ieducar:ieducar /app/public/build ./public/build
 
