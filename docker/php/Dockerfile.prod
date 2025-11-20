@@ -44,7 +44,6 @@ RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
     apk del .phpize_deps
 
 RUN docker-php-ext-install opcache
-COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 RUN addgroup -g 1000 ieducar && \
     adduser -G ieducar -g ieducar -s /bin/sh -D ieducar
