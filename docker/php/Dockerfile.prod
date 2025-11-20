@@ -96,7 +96,7 @@ RUN php artisan config:cache || true && \
 
 RUN mkdir -p storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache && \
-    chown -R ieducar:ieducar storage/bootstrap/cache
+    chown -R ieducar:ieducar storage bootstrap/cache
 
 USER ieducar
 EXPOSE 9000
