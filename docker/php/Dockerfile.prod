@@ -13,9 +13,10 @@ RUN apk add --no-cache \
     libzip-dev \
     postgresql-dev \
     postgresql17-client \
-    $PHPIZE_DEPS
-
-RUN docker-php-ext-install gd zip pdo pdo_pgsql pgsql pcntl
+    $PHPIZE_DEPS \
+ && docker-php-ext-install gd zip pdo pdo_pgsql pgsql pcntl ftp \
+ && docker-php-ext-enable ftp \
+ && apk del $PHPIZE_DEPS
 
 COPY --from=composer_source /usr/bin/composer /usr/bin/composer
 
@@ -52,8 +53,8 @@ RUN apk add --no-cache \
     bash
 
 RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
-    docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip && \
-    docker-php-ext-enable bcmath gd pcntl pdo pdo_pgsql pgsql zip && \
+    docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
+    docker-php-ext-enable bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
     apk del .phpize_deps
 
 RUN docker-php-ext-install opcache
