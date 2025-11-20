@@ -83,6 +83,10 @@ COPY --chown=ieducar:ieducar resources ./resources
 COPY --chown=ieducar:ieducar routes ./routes
 COPY --chown=ieducar:ieducar storage ./storage
 
+COPY --chown=ieducar:ieducar ieducar ./ieducar
+COPY --chown=ieducar:ieducar src ./src
+COPY --chown=ieducar:ieducar packages ./packages
+
 COPY --from=composer_builder /app/vendor ./vendor
 COPY --from=node_builder --chown=ieducar:ieducar /app/public/build ./public/build
 
@@ -92,7 +96,7 @@ RUN php artisan config:cache || true && \
 
 RUN mkdir -p storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache && \
-    chown -R ieducar:ieducar storage bootstrap/cache
+    chown -R ieducar:ieducar storage/bootstrap/cache
 
 USER ieducar
 EXPOSE 9000
