@@ -139,7 +139,7 @@
         "sort-packages": true,
         "optimize-autoloader": true,
         "allow-plugins": {
-            "dex/composer-plug-and-play": true,
+            "dex/composer-plug-and-play": false,
             "pestphp/pest-plugin": true
         }
     },
