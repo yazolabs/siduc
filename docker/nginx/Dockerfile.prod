@@ -1,6 +1,7 @@
 FROM nginx:1.28-alpine
 
 COPY ./docker/nginx/conf.d/prod/default.conf /etc/nginx/conf.d/default.conf
+COPY ./docker/nginx/conf.d/prod/upstream.conf /etc/nginx/conf.d/upstream.conf
 COPY ./docker/nginx/snippets/prod/snippets.conf /etc/nginx/snippets/snippets.conf
 
 WORKDIR /var/www/ieducar
