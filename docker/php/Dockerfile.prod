@@ -33,7 +33,7 @@ RUN yarn install --frozen-lockfile
 
 COPY resources ./resources
 COPY public ./public
-COPY vite.config.js ./
+COPY vite.config.js ./vite.config.js
 
 RUN yarn build
 
@@ -64,39 +64,19 @@ RUN addgroup -g 1000 ieducar && \
 
 WORKDIR /var/www/ieducar
 
-COPY --chown=ieducar:ieducar \
-    artisan \
-    composer.json \
-    composer.lock \
-    package.json \
-    vite.config.js \
-    phpunit.xml \
-    server.php \
-    ./
-
-COPY --chown=ieducar:ieducar app ./app
-COPY --chown=ieducar:ieducar bootstrap ./bootstrap
-COPY --chown=ieducar:ieducar config ./config
-COPY --chown=ieducar:ieducar database ./database
-COPY --chown=ieducar:ieducar public ./public
-COPY --chown=ieducar:ieducar resources ./resources
-COPY --chown=ieducar:ieducar routes ./routes
-COPY --chown=ieducar:ieducar storage ./storage
-
-COPY --chown=ieducar:ieducar ieducar ./ieducar
-COPY --chown=ieducar:ieducar src ./src
-COPY --chown=ieducar:ieducar packages ./packages
+COPY --chown=ieducar:ieducar . .
 
 COPY --from=composer_builder /app/vendor ./vendor
-COPY --from=node_builder --chown=ieducar:ieducar /app/public/build ./public/build
 
-RUN php artisan config:cache || true && \
-    php artisan route:cache || true && \
-    php artisan view:cache || true
+COPY --from=node_builder --chown=ieducar:ieducar /app/public/build ./public/build
 
 RUN mkdir -p storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache && \
     chown -R ieducar:ieducar storage bootstrap/cache
+
+RUN php artisan config:cache || true && \
+    php artisan route:cache || true && \
+    php artisan view:cache || true
 
 USER ieducar
 EXPOSE 9000

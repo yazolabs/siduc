@@ -35,7 +35,7 @@ services:
       retries: 5
 
   horizon:
-    image: php:8.4-ieducar
+    <<: *php
     container_name: ieducar-horizon
     command: php /var/www/ieducar/artisan horizon
     depends_on:
@@ -43,11 +43,6 @@ services:
         condition: service_started
       redis:
         condition: service_started
-    environment:
-      CACHE_DRIVER: redis
-      REDIS_HOST: redis
-      DB_HOST: postgres
-      PGPASSWORD: ${DB_PASSWORD}
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "pgrep -f 'artisan horizon' || exit 1"]
