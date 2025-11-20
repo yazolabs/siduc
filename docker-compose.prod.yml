@@ -99,8 +99,8 @@ services:
   pmd:
     container_name: ieducar-pmd
     build:
-      context: .
-      dockerfile: packages/portabilis/pre-matricula-digital/Dockerfile.prod
+      context: ./packages/portabilis/pre-matricula-digital
+      dockerfile: Dockerfile.prod
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost/index.html || exit 1"]
