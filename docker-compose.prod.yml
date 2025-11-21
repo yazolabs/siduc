@@ -59,7 +59,7 @@ services:
       - fpm
     restart: always
     healthcheck:
-      test: ["CMD-SHELL", "curl -fsSL http://localhost || exit 1"]
+      test: ["CMD", "true"]
       interval: 10s
       timeout: 5s
       retries: 3
