@@ -50,7 +50,10 @@ RUN apk add --no-cache \
     unzip \
     git \
     curl \
-    bash
+    bash \
+    nodejs \
+    npm \
+ && npm install -g yarn
 
 RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
     docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
