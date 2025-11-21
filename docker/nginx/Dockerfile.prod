@@ -10,6 +10,8 @@ WORKDIR /var/www/ieducar
 
 COPY public /var/www/ieducar/public
 
+COPY ieducar /var/www/ieducar/ieducar
+
 RUN chmod -R 755 /var/www/ieducar && \
     chown -R nginx:nginx /var/www/ieducar
 
