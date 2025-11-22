@@ -28,6 +28,7 @@
         "composer/semver": "3.4.4",
         "dex/frontier": "0.16.0",
         "dex/composer-plug-and-play": "0.24.0",
+        "fakerphp/faker": "v1.24.1",
         "google/recaptcha": "1.3.1",
         "guzzlehttp/guzzle": "7.10.0",
         "honeybadger-io/honeybadger-laravel": "v4.7.0",
@@ -148,7 +149,6 @@
         "portabilis/i-educar-reports-package": "@dev"
     },
     "require-dev": {
-        "fakerphp/faker": "v1.24.1",
         "laravel/pint": "v1.25.1",
         "laravel/sail": "v1.48.0",
         "laravel/telescope": "v5.15.0",
@@ -288,27 +288,27 @@
     "repositories": [
         {
             "type": "path",
-            "url": "./i-educar-educacenso-package",
+            "url": "./packages/portabilis/i-educar-educacenso-package",
             "symlink": true
         },
         {
             "type": "path",
-            "url": "./i-educar-library-package",
+            "url": "./packages/portabilis/i-educar-library-package",
             "symlink": true
         },
         {
             "type": "path",
-            "url": "./i-educar-reports-package",
+            "url": "./packages/portabilis/i-educar-reports-package",
             "symlink": true
         },
         {
             "type": "path",
-            "url": "./i-educar-transport-package",
+            "url": "./packages/portabilis/i-educar-transport-package",
             "symlink": true
         },
         {
             "type": "path",
-            "url": "./pre-matricula-digital",
+            "url": "./packages/portabilis/pre-matricula-digital",
             "symlink": true
         }
     ]
