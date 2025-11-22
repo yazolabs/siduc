@@ -39,6 +39,9 @@ RUN yarn build
 
 FROM php:${PHP_VERSION}-fpm-alpine AS php_runtime
 
+COPY --from=composer_source /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 RUN apk add --no-cache \
     libc-dev \
     libpng-dev \
