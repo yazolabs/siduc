@@ -1,32 +1,46 @@
 (function () {
-  window.config = window.config || {};
+  const w = window;
+  w.config = w.config || {};
+  const c = w.config;
 
-  window.config.city = window.config.city ?? "Goiana";
-  window.config.state = window.config.state ?? "PE";
+  c.city = c.city ?? "Goiana";
+  c.state = c.state ?? "PE";
+  c.ibge_codes = c.ibge_codes ?? "2606200";
+  c.logo = c.logo ?? null;
+  c.slogan = c.slogan ?? "";
+  c.map = c.map || { lat: -7.560556, lng: -35.0025, zoom: 12 };
 
-  window.config.ibge_codes = window.config.ibge_codes ?? "2606200";
-
-  window.config.logo = window.config.logo ?? null;
-  window.config.slogan = window.config.slogan ?? "";
-
-  window.config.map = window.config.map || {
-    lat: -7.560556,
-    lng: -35.0025,
-    zoom: 12,
-  };
-
-  window.config.video_intro_url =
-    window.config.video_intro_url ??
+  c.video_intro_url =
+    c.video_intro_url ??
     "https://www.youtube.com/embed/ltXDgjS-XpA?html5=1";
 
-  window.config.token =
-    window.config.token ?? "O1oS2c032JHxnclkS7kpfKfsi2ey7DLT";
+  c.token =
+    c.token ?? "O1oS2c032JHxnclkS7kpfKfsi2ey7DLT";
 
-  window.config.config = window.config.config || {};
+  c.config = c.config || {};
+  c.config.allow_preregistration_data_update =
+    c.config.allow_preregistration_data_update ?? false;
+  c.config.allow_preregistration_cancel =
+    c.config.allow_preregistration_cancel ?? false;
 
-  window.config.config.allow_preregistration_data_update =
-    window.config.config.allow_preregistration_data_update ?? false;
+  c.allow_preregistration_data_update =
+    c.allow_preregistration_data_update ?? c.config.allow_preregistration_data_update;
+  c.allow_preregistration_cancel =
+    c.allow_preregistration_cancel ?? c.config.allow_preregistration_cancel;
 
-  window.config.config.allow_preregistration_cancel =
-    window.config.config.allow_preregistration_cancel ?? false;
+  c.entity = c.entity || {};
+  c.entity.config = c.entity.config || {};
+  c.entity.config.allow_preregistration_data_update =
+    c.entity.config.allow_preregistration_data_update ?? c.config.allow_preregistration_data_update;
+  c.entity.config.allow_preregistration_cancel =
+    c.entity.config.allow_preregistration_cancel ?? c.config.allow_preregistration_cancel;
+
+  c.prematricula = c.prematricula || {};
+  c.prematricula.config = c.prematricula.config || {};
+  c.prematricula.config.allow_preregistration_data_update =
+    c.prematricula.config.allow_preregistration_data_update ?? c.config.allow_preregistration_data_update;
+  c.prematricula.config.allow_preregistration_cancel =
+    c.prematricula.config.allow_preregistration_cancel ?? c.config.allow_preregistration_cancel;
+
+  w.__PMD_CONFIG_LOADED__ = true;
 })();
