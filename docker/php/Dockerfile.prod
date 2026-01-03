@@ -28,14 +28,29 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 FROM node:22-alpine AS node_builder
 WORKDIR /app
 
+ARG VITE_GOOGLE_API_KEY
+ARG VITE_FROALA_KEY
+
+ENV VITE_GOOGLE_API_KEY=$VITE_GOOGLE_API_KEY
+ENV VITE_FROALA_KEY=$VITE_FROALA_KEY
+
+RUN corepack enable && corepack prepare yarn@1.22.22 --activate
+
 COPY package.json yarn.lock* ./
 RUN yarn install --frozen-lockfile
 
 COPY resources ./resources
 COPY public ./public
 COPY vite.config.js ./vite.config.js
-
 RUN yarn build
+
+COPY packages/portabilis/pre-matricula-digital/package.json \
+     packages/portabilis/pre-matricula-digital/yarn.lock* \
+     /app/pmd/
+RUN yarn --cwd /app/pmd install --frozen-lockfile
+
+COPY packages/portabilis/pre-matricula-digital /app/pmd
+RUN yarn --cwd /app/pmd build --base=/vendor/pre-matricula-digital/
 
 FROM php:${PHP_VERSION}-fpm-alpine AS php_runtime
 
@@ -53,10 +68,7 @@ RUN apk add --no-cache \
     unzip \
     git \
     curl \
-    bash \
-    nodejs \
-    npm \
- && npm install -g yarn
+    bash
 
 RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
     docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
@@ -75,6 +87,8 @@ COPY --chown=ieducar:ieducar . .
 COPY --from=composer_builder /app/vendor ./vendor
 
 COPY --from=node_builder --chown=ieducar:ieducar /app/public/build ./public/build
+
+COPY --from=node_builder --chown=ieducar:ieducar /app/pmd/dist ./packages/portabilis/pre-matricula-digital/dist
 
 RUN mkdir -p storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache && \
