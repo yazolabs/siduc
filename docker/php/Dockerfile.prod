@@ -54,7 +54,8 @@ COPY packages/portabilis/pre-matricula-digital/package.json \
 RUN yarn --cwd /app/pmd install --frozen-lockfile --network-timeout 600000 --non-interactive
 
 COPY packages/portabilis/pre-matricula-digital /app/pmd
-RUN yarn --cwd /app/pmd build --base=/vendor/pre-matricula-digital/
+RUN printf "VITE_GOOGLE_API_KEY=%s\nVITE_FROALA_KEY=%s\n" "$VITE_GOOGLE_API_KEY" "$VITE_FROALA_KEY" > /app/pmd/.env
+RUN yarn --cwd /app/pmd build -- --base=/vendor/pre-matricula-digital/
 
 FROM php:${PHP_VERSION}-fpm-alpine AS php_runtime
 
