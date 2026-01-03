@@ -1,0 +1,1 @@
+window.prematricula = window.prematricula || {};
