@@ -143,8 +143,10 @@
         "vlucas/phpdotenv": "v5.6.2",
         "voku/portable-ascii": "2.0.3",
         "portabilis/pre-matricula-digital": "@dev",
-        "portabilis/i-educar-educacenso-package": "*",
-        "portabilis/i-educar-transport-package": "*"
+        "portabilis/i-educar-educacenso-package": "@dev",
+        "portabilis/i-educar-transport-package": "@dev",
+        "portabilis/i-educar-library-package": "@dev",
+        "portabilis/i-educar-reports-package": "@dev"
     },
     "require-dev": {
         "laravel/pint": "v1.25.1",
@@ -284,6 +286,26 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/portabilis/i-educar-educacenso-package",
+            "symlink": true
+        },
+        {
+            "type": "path",
+            "url": "./packages/portabilis/i-educar-library-package",
+            "symlink": true
+        },
+        {
+            "type": "path",
+            "url": "./packages/portabilis/i-educar-reports-package",
+            "symlink": true
+        },
+        {
+            "type": "path",
+            "url": "./packages/portabilis/i-educar-transport-package",
+            "symlink": true
+        },
         {
             "type": "path",
             "url": "./packages/portabilis/pre-matricula-digital",

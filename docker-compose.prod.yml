@@ -91,17 +91,5 @@ services:
       timeout: 5s
       retries: 5
 
-  pmd:
-    container_name: ieducar-pmd
-    build:
-      context: ./packages/portabilis/pre-matricula-digital
-      dockerfile: Dockerfile.prod
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost/index.html || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
 volumes:
   ieducar_postgres_data:
