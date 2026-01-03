@@ -1,4 +1,3 @@
-
 (function () {
   window.config = window.config || {};
 
@@ -22,4 +21,12 @@
 
   window.config.token =
     window.config.token ?? "O1oS2c032JHxnclkS7kpfKfsi2ey7DLT";
+
+  window.config.config = window.config.config || {};
+
+  window.config.config.allow_preregistration_data_update =
+    window.config.config.allow_preregistration_data_update ?? false;
+
+  window.config.config.allow_preregistration_cancel =
+    window.config.config.allow_preregistration_cancel ?? false;
 })();
