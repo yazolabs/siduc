@@ -1,0 +1,15 @@
+[submodule "packages/portabilis/i-educar-educacenso-package"]
+	path = packages/portabilis/i-educar-educacenso-package
+	url = https://github.com/portabilis/i-educar-educacenso-package.git
+[submodule "packages/portabilis/i-educar-library-package"]
+	path = packages/portabilis/i-educar-library-package
+	url = https://github.com/portabilis/i-educar-library-package.git
+[submodule "packages/portabilis/i-educar-reports-package"]
+	path = packages/portabilis/i-educar-reports-package
+	url = https://github.com/portabilis/i-educar-reports-package.git
+[submodule "packages/portabilis/i-educar-transport-package"]
+	path = packages/portabilis/i-educar-transport-package
+	url = https://github.com/portabilis/i-educar-transport-package.git
+[submodule "packages/portabilis/pre-matricula-digital"]
+	path = packages/portabilis/pre-matricula-digital
+	url = https://github.com/portabilis/pre-matricula-digital.git
