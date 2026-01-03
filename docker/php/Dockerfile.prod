@@ -84,7 +84,7 @@ WORKDIR /var/www/ieducar
 
 COPY --chown=ieducar:ieducar . .
 
-COPY --from=composer_builder /app/vendor ./vendor
+COPY --from=composer_builder --chown=ieducar:ieducar /app/vendor ./vendor
 
 COPY --from=node_builder --chown=ieducar:ieducar /app/public/build ./public/build
 
