@@ -36,6 +36,9 @@ ENV VITE_FROALA_KEY=$VITE_FROALA_KEY
 
 RUN corepack enable && corepack prepare yarn@1.22.22 --activate
 
+RUN yarn config set registry https://registry.npmjs.org \
+ && yarn config set network-timeout 600000 -g
+
 COPY package.json yarn.lock* ./
 RUN yarn install --frozen-lockfile
 
@@ -47,7 +50,8 @@ RUN yarn build
 COPY packages/portabilis/pre-matricula-digital/package.json \
      packages/portabilis/pre-matricula-digital/yarn.lock* \
      /app/pmd/
-RUN yarn --cwd /app/pmd install --frozen-lockfile
+
+RUN yarn --cwd /app/pmd install --frozen-lockfile --network-timeout 600000 --non-interactive
 
 COPY packages/portabilis/pre-matricula-digital /app/pmd
 RUN yarn --cwd /app/pmd build --base=/vendor/pre-matricula-digital/
