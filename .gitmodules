@@ -12,4 +12,4 @@
 	url = https://github.com/portabilis/i-educar-transport-package.git
 [submodule "packages/portabilis/pre-matricula-digital"]
 	path = packages/portabilis/pre-matricula-digital
-	url = https://github.com/portabilis/pre-matricula-digital.git
+	url = git@github.com:yazolabs/pre-matricula-digital.git
