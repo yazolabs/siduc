@@ -1,7 +1,7 @@
 (function () {
   window.config = window.config || {};
 
-  window.config.city = window.config.city ?? "Goiana";
+  window.config.city = window.config.city ?? "";
   window.config.state = window.config.state ?? "PE";
   window.config.ibge_codes = window.config.ibge_codes ?? "2606200";
 
