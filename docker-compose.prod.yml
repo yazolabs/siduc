@@ -58,6 +58,10 @@ services:
     build:
       context: .
       dockerfile: docker/nginx/Dockerfile.prod
+      args:
+        VITE_GOOGLE_API_KEY: ${VITE_GOOGLE_API_KEY}
+        VITE_FROALA_KEY: ${VITE_FROALA_KEY}
+        CACHE_BUST: ${COOLIFY_RESOURCE_UUID:-local}-${COOLIFY_BRANCH:-local}-${COOLIFY_DEPLOYMENT_ID:-0}
     depends_on:
       - fpm
     restart: always
