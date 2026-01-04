@@ -63,34 +63,27 @@ COPY packages/portabilis/pre-matricula-digital /app/pmd
 RUN printf "VITE_GOOGLE_API_KEY=%s\nVITE_FROALA_KEY=%s\n" "$VITE_GOOGLE_API_KEY" "$VITE_FROALA_KEY" > /app/pmd/.env
 RUN yarn --cwd /app/pmd build -- --base=/vendor/pre-matricula-digital/
 
-FROM php:${PHP_VERSION}-fpm-alpine AS php_runtime
+FROM php:${PHP_VERSION}-fpm AS php_runtime
 
 COPY --from=composer_source /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-RUN apk add --no-cache \
-    libc-dev \
-    libpng-dev \
-    libzip-dev \
-    linux-headers \
-    postgresql-dev \
-    postgresql17-client \
-    ttf-dejavu \
-    unzip \
-    git \
-    curl \
-    bash \
-    openjdk17-jre-headless
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git unzip curl bash \
+    libpng-dev libzip-dev \
+    libpq-dev \
+    fonts-dejavu \
+    openjdk-8-jre-headless \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN apk add --no-cache --virtual .phpize_deps $PHPIZE_DEPS && \
-    docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
-    docker-php-ext-enable bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp && \
-    apk del .phpize_deps
+RUN apt-get update && apt-get install -y --no-install-recommends $PHPIZE_DEPS \
+ && docker-php-ext-install bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp opcache \
+ && docker-php-ext-enable bcmath gd pcntl pdo pdo_pgsql pgsql zip ftp opcache \
+ && apt-get purge -y --auto-remove $PHPIZE_DEPS \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install opcache
-
-RUN addgroup -g 1000 ieducar && \
-    adduser -G ieducar -g ieducar -s /bin/sh -D ieducar
+RUN groupadd -g 1000 ieducar \
+ && useradd -u 1000 -g 1000 -s /bin/bash -m ieducar
 
 WORKDIR /var/www/ieducar
 
@@ -98,15 +91,13 @@ COPY --chown=ieducar:ieducar . .
 
 COPY --from=composer_builder --chown=ieducar:ieducar /app/vendor ./vendor
 COPY --from=node_builder --chown=ieducar:ieducar /app/public/build ./public/build
-
 COPY --from=node_builder --chown=ieducar:ieducar /app/pmd/dist ./packages/portabilis/pre-matricula-digital/dist
 
 RUN mkdir -p public/vendor/pre-matricula-digital \
- && cp -a packages/portabilis/pre-matricula-digital/dist/. public/vendor/pre-matricula-digital/
-
-RUN mkdir -p storage bootstrap/cache && \
-    chmod -R 775 storage bootstrap/cache && \
-    chown -R ieducar:ieducar storage bootstrap/cache
+ && cp -a packages/portabilis/pre-matricula-digital/dist/. public/vendor/pre-matricula-digital/ \
+ && mkdir -p storage bootstrap/cache \
+ && chmod -R 775 storage bootstrap/cache \
+ && chown -R ieducar:ieducar storage bootstrap/cache
 
 RUN php artisan config:cache || true && \
     php artisan route:cache || true && \
