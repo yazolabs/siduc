@@ -73,7 +73,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpng-dev libzip-dev \
     libpq-dev \
     fonts-dejavu \
-    openjdk-8-jre-headless \
+    default-jre-headless \
  && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends $PHPIZE_DEPS \
@@ -88,21 +88,20 @@ RUN groupadd -g 1000 ieducar \
 WORKDIR /var/www/ieducar
 
 COPY --chown=ieducar:ieducar . .
-
 COPY --from=composer_builder --chown=ieducar:ieducar /app/vendor ./vendor
 COPY --from=node_builder --chown=ieducar:ieducar /app/public/build ./public/build
 COPY --from=node_builder --chown=ieducar:ieducar /app/pmd/dist ./packages/portabilis/pre-matricula-digital/dist
 
 RUN mkdir -p public/vendor/pre-matricula-digital \
  && cp -a packages/portabilis/pre-matricula-digital/dist/. public/vendor/pre-matricula-digital/ \
- && mkdir -p storage bootstrap/cache \
+ && mkdir -p storage/logs bootstrap/cache \
  && chmod -R 775 storage bootstrap/cache \
  && chown -R ieducar:ieducar storage bootstrap/cache
 
+USER ieducar
 RUN php artisan config:cache || true && \
     php artisan route:cache || true && \
     php artisan view:cache || true
 
-USER ieducar
 EXPOSE 9000
 CMD ["php-fpm"]
