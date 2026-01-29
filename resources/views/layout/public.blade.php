@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="{{ url('favicon.ico') }}">
-    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - Educacional</title>
+    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - SIDUC</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="{{ Asset::get('intranet/styles/login.css') }}">
@@ -51,7 +51,7 @@
 
     <div>
         <h1 style="font-size: 2.5rem; font-weight: 800;">Bem-vindo</h1>
-        {{-- <img alt="Logo" style="width: 150px" src="{{ config('legacy.config.ieducar_image') ?? url('intranet/imagens/brasao-republica.png') }}" > --}}
+        <img alt="Logo" style="width: 200px" src="/img/siduc-logo-tagline.png" >
     </div>
 
     <h1>{{ config('legacy.config.ieducar_entity_name') }}</h1>

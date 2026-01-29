@@ -1793,7 +1793,7 @@ class EducacensoAnaliseController extends ApiCoreController
             if (isArrayEmpty($aluno->tipoAtendimentoMatricula) && in_array(TipoAtendimentoTurma::AEE, $tipoAtendimentoTurma)) {
                 $mensagem[] = [
                     'text' => "Dados para formular o registro 60 da escola {$nomeEscola} não encontrados. Verificamos que a turma {$nomeTurma} é de atendimento educacional especializado, portanto é necessário informar qual a tipo de atendimento do(a) aluno(a) {$nomeAluno}.",
-                    'path' => '(Escola > Cadastros > Alunos > Visualizar > Tipo do AEE do aluno > Campo: Tipo de Atendimento Educacional Especializado do aluno na turma)',
+                    'path' => '(Escola > Cadastros > Alunos > Visualizar > Tipo do AEE do aluno > Campo: Tipo de Atendimento SIDUC Especializado do aluno na turma)',
                     'linkPath' => "/intranet/educar_matricula_turma_tipo_aee_cad.php?ref_cod_matricula={$codigoMatricula}&ref_cod_aluno={$codigoAluno}",
                     'fail' => true,
                 ];

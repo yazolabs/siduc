@@ -1,0 +1,176 @@
+/* public/css/brand-overrides.css
+   Objetivo:
+   - Manter layout/tipografia/spacing do base.css
+   - Trocar SOMENTE cores (e arredondar um pouco mais)
+   - Sem criar novos efeitos (apenas substituir as cores já existentes)
+*/
+
+:root {
+  /* Brand */
+  --brand-primary: #00D2FF;   /* cyan */
+  --brand-secondary: #1A2B4C; /* navy */
+
+  /* Neutros (para substituir os tons antigos azulados) */
+  --bg: #F6F9FC;             /* fundo claro */
+  --sidebar-bg: #EAF2FF;      /* sidebar (era #e9f0f8) */
+  --surface: #FFFFFF;         /* cards/miolo */
+  --border: #D3DEEE;          /* bordas suaves */
+
+  /* Texto */
+  --text: #0F172A;
+  --text-muted: #5B6777;
+  --text-on-dark: #FFFFFF;
+
+  /* Radius (um pouco mais moderno) */
+  --radius-sm: 6px;   /* antes 3px */
+  --radius-md: 10px;  /* botões/inputs um pouco mais arredondados */
+}
+
+/* Fundo geral */
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Header / Footer (era #47728f) */
+.ieducar-header,
+.ieducar-footer {
+  background-color: var(--brand-secondary) !important;
+  color: var(--text-on-dark) !important;
+}
+
+/* Footer links */
+.ieducar-footer a {
+  color: var(--text-on-dark) !important;
+}
+
+/* Sidebar (era #e9f0f8) */
+.ieducar-sidebar {
+  background: var(--sidebar-bg) !important;
+}
+
+/* Logo e botões do header */
+.ieducar-header-logo h1 a,
+.ieducar-header-links .dropbtn {
+  color: var(--text-on-dark) !important;
+}
+
+/* Dropdown (era #f9f9f9 / #646b71) */
+.ieducar-header-links .dropdown-content {
+  background-color: var(--surface) !important;
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden !important;
+}
+
+.ieducar-header-links .dropdown-content a {
+  color: var(--text-muted) !important;
+}
+
+/* Hover existente no base.css: só troca cor (não cria efeito novo) */
+.ieducar-header-links .dropdown-content a:hover {
+  color: var(--brand-secondary) !important; /* era #188ad1 */
+}
+
+/* Quick search input (era border #cddce6 e texto #47728f) */
+.ieducar-quick-search-input {
+  border-color: var(--border) !important;
+  color: var(--brand-secondary) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.ieducar-quick-search-title {
+  color: var(--brand-secondary) !important;
+}
+
+/* Menu lateral: texto e ícones (era #47728f e #98b0c3) */
+.ieducar-sidebar-menu li a {
+  color: var(--brand-secondary) !important;
+  border-radius: var(--radius-md) !important; /* era 3px */
+}
+
+.ieducar-sidebar-menu li a i {
+  color: rgba(26, 43, 76, 0.45) !important;
+}
+
+/* Hover/active existentes no base.css (era #cddce6) */
+.ieducar-sidebar-menu li a:hover,
+.ieducar-sidebar-menu-active {
+  background: rgba(26, 43, 76, 0.10) !important;
+}
+
+/* Menu horizontal (era bg #e9eff7, hover #cddce6, texto #47728f) */
+.ieducar-menu,
+.ieducar-sub-menu {
+  background: var(--sidebar-bg) !important;
+}
+
+.ieducar-menu a {
+  color: var(--brand-secondary) !important;
+}
+
+.ieducar-menu > li:hover {
+  background: rgba(26, 43, 76, 0.10) !important;
+}
+
+.ieducar-sub-menu {
+  background: var(--surface) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important; /* era #f3f3f3 */
+  border-radius: var(--radius-sm) !important;
+  overflow: hidden !important;
+}
+
+.ieducar-sub-menu li a {
+  color: var(--text-muted) !important;
+}
+
+.ieducar-sub-menu li:hover {
+  background: rgba(26, 43, 76, 0.10) !important;
+}
+
+/* Breadcrumb (era #47728f) */
+.breadcrumb a,
+.breadcrumb span {
+  color: var(--brand-secondary) !important;
+}
+
+.breadcrumb .breadcrumb-current,
+.breadcrumb .breadcrumb-current:hover,
+.breadcrumb .breadcrumb-separator,
+.breadcrumb .breadcrumb-separator:hover {
+  color: rgba(15, 23, 42, 0.45) !important;
+}
+
+/* Links gerais: mantém sem sublinhado (igual base.css) e troca cor */
+a {
+  color: var(--brand-secondary) !important;
+}
+
+/* #corpo a:hover já sublinha no legacy; aqui só troca a cor (sem criar efeito) */
+#corpo a:hover {
+  color: var(--brand-primary) !important;
+}
+
+/* Multiselect (quick-search) - mesmas regras, só mudando cores e radius */
+.quick-search .multiselect__tags {
+  border-color: var(--border) !important;
+  border-radius: var(--radius-md) !important; /* era 3px */
+}
+
+.quick-search .multiselect__content-wrapper {
+  border-color: var(--border) !important;
+  border-bottom-left-radius: var(--radius-md) !important;
+  border-bottom-right-radius: var(--radius-md) !important;
+}
+
+/* Highlight existente (era #cddce6) */
+.quick-search .multiselect__option--highlight {
+  background: rgba(0, 210, 255, 0.14) !important;
+}
+
+/* (Opcional) Arredondar avatar um tiquinho mais já é 50% no base.css */
+
+/* Rodapé do layout legacy (classe rodape) */
+.rodape {
+  background-color: var(--brand-secondary) !important;
+  color: var(--text-on-dark) !important;
+}

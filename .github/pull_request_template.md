@@ -1,4 +1,4 @@
-Olá e obrigado por nos ajudar a tornar o Yazo Educacional um projeto mais estável. Para abrir um pull request use o template abaixo:
+Olá e obrigado por nos ajudar a tornar o SIDUC um projeto mais estável. Para abrir um pull request use o template abaixo:
 
 **DESCRIÇÃO:**
 

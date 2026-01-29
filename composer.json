@@ -1,12 +1,12 @@
 {
-    "name": "yazolabs/yazo-educacional",
-    "description": "Software livre de gestão escolar da Yazo Labs, baseado no projeto da Portábilis/Yazo Educacional",
+    "name": "yazolabs/siduc",
+    "description": "Software livre de gestão escolar da Yazo Labs, baseado no projeto da Portábilis/SIDUC",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "version": "2.10.0",
     "keywords": [
         "Yazo Labs",
-        "Yazo Educacional"
+        "SIDUC"
     ],
     "authors": [
         {
@@ -15,7 +15,7 @@
             "homepage": "https://yazolabs.com.br"
         }
     ],
-    "homepage": "https://github.com/yazolabs/yazo-educacional",
+    "homepage": "https://github.com/yazolabs/siduc",
     "require": {
         "php": ">=8.3",
         "ext-gd": "*",
@@ -62,6 +62,13 @@
         "spatie/laravel-ignition": "^2.0",
         "symfony/yaml": "^7.0"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/portabilis/*",
+            "options": { "symlink": true }
+        }
+    ],
     "autoload": {
         "classmap": [
             "ieducar/intranet/include",

@@ -7,7 +7,7 @@
     <meta http-equiv="Expires" content="-1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ url('favicon.ico') }}" />
-    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - Educacional</title>
+    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - SIDUC</title>
 
     <script>
         dataLayer = [{
@@ -57,6 +57,7 @@
     <link rel="stylesheet" type="text/css" href="{{ Asset::get("/intranet/scripts/select2/select2.min.css") }}">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css">
     <link rel="stylesheet" type='text/css' href='{{ Asset::get('css/base.css') }}'>
+    <link rel="stylesheet" type="text/css" href="{{ Asset::get('css/brand-overrides.css') }}">
     <link rel="stylesheet" type="text/css" href='{{ Asset::get('/intranet/scripts/jquery/jquery-ui.min-1.9.2/css/custom/jquery-ui-1.9.2.custom.min.css') }}'>
     <link rel="stylesheet" type="text/css" href='{{ Asset::get('/intranet/scripts/jquery-maxlength/jquery.maxlength.css') }}'>
     <link rel="stylesheet" type="text/css" href="{{ Asset::get("/intranet/scripts/summernote/summernote-lite.css") }}">
@@ -104,9 +105,9 @@
                     <h1 style="display: flex; align-items: center;">
                         <a href="{{ Asset::get('/') }}" 
                             style="display: flex; align-items: center; text-decoration: none; color: inherit; border-radius: 6px; transition: all 0.2s ease;">
-                            {{-- <img src="/img/logo.svg" alt="logo-yazo" style="width: 8%; height: 8%; padding-right: 10px;"> --}}
-                            {{-- Yazo Educacional --}}
-                            Home
+                            <img src="/img/siduc-logo-tagline.png" alt="logo-siduc" style="width: 10%; height: 10%; padding-right: 10px;">
+                            {{-- SIDUC --}}
+                            SIDUC
                         </a>
                     </h1>
                 </div>

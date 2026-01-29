@@ -62,7 +62,7 @@ return new class extends clsCadastro
             'resources' => [
                 1 => 'Todas',
                 2 => 'Regular',
-                3 => 'Atendimento Educacional Especializado - AEE',
+                3 => 'Atendimento SIDUC Especializado - AEE',
                 4 => 'Atividade complementar',
                 5 => 'Educação de Jovens e Adultos - EJA',
             ],

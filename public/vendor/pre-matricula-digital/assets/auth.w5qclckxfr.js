@@ -2,5 +2,5 @@ import{h as s,u as n}from"./common.w5qclckxfr.js";import{d as c,u as i,r as u,o 
       O login de acesso no <strong>Pr\xE9-matr\xEDcula Digital</strong> \xE9 exclusivo para secret\xE1rios e diretores escolares,
       ou gestores da Secretaria de Educa\xE7\xE3o.
       <br>
-      No momento, para acessar o sistema voc\xEA deve estar logado no sistema Educacional.
+      No momento, para acessar o sistema voc\xEA deve estar logado no sistema SIDUC.
     `}),(r,p)=>(d(),l("main",null,[m("div",{class:"text-center",innerHTML:o.value},null,8,h)]))}});export{_ as default};

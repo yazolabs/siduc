@@ -22,7 +22,7 @@ x-php: &php
 services:
   php:
     <<: *php
-    container_name: ieducar-php
+    container_name: siduc-php
     command: tail -f /dev/null
     restart: none
     volumes:
@@ -30,7 +30,7 @@ services:
 
   fpm:
     <<: *php
-    container_name: ieducar-fpm
+    container_name: siduc-fpm
     command: php-fpm
     restart: none
     volumes:
@@ -38,14 +38,14 @@ services:
 
   horizon:
     <<: *php
-    container_name: ieducar-horizon
+    container_name: siduc-horizon
     command: php /var/www/ieducar/artisan horizon
     restart: none
     volumes:
       - ./:/var/www/ieducar
 
   nginx:
-    container_name: ieducar-nginx
+    container_name: siduc-nginx
     image: nginx:1.28-alpine
     working_dir: /var/www/ieducar
     volumes:
@@ -64,7 +64,7 @@ services:
       start_period: 30s
 
   postgres:
-    container_name: ieducar-postgres
+    container_name: siduc-postgres
     image: postgres:17-alpine
     environment:
       POSTGRES_DB: ${DB_DATABASE}
@@ -77,16 +77,16 @@ services:
       - "5442:5432"
 
   redis:
-    container_name: ieducar-redis
+    container_name: siduc-redis
     image: redis:8-alpine
     restart: none
     ports:
       - ${DOCKER_REDIS_PORT:-6379}:6379
 
   pmd:
-    container_name: ieducar-pmd
+    container_name: siduc-pmd
     image: node:22-alpine
-    command: yarn dev --host 0.0.0.0
+    command: sh -lc "yarn install && yarn dev --host 0.0.0.0"
     ports:
       - "5173:5173"
     volumes:

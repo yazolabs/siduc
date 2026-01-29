@@ -44,7 +44,7 @@ class LegacyController extends Controller
     }
 
     /**
-     * Return Yazo Educacional legacy code path.
+     * Return SIDUC legacy code path.
      *
      * @return string
      */

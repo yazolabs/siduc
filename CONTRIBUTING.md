@@ -1,6 +1,6 @@
 # Guia de contribuição
 
-Que bom que você resolveu contribuir conosco. Obrigado! A proposta do Yazo Educacional é
+Que bom que você resolveu contribuir conosco. Obrigado! A proposta do SIDUC é
 ambiciosa e precisamos de toda ajuda possível para alcançar nossos objetivos.
 Neste guia vamos explicar como funcionam os nossos processos internos e como
 podemos trabalhar juntos da melhor forma possível.
@@ -18,7 +18,7 @@ Existem diversas formas de contribuir com o projeto:
 
 ### Reportando bugs
 
-Se encontrou um bug no Yazo Educacional você pode reportá-lo usando a ferramenta de
+Se encontrou um bug no SIDUC você pode reportá-lo usando a ferramenta de
 [issues do GitHub](https://github.com/portabilis/i-educar/issues). Porém antes
 de enviar seu bug é importante fazer as seguintes verificações:
 
@@ -48,7 +48,7 @@ Exemplo:
 ```
 **MENU:**
 
-Yazo Educacional - Escola > Cadastro > Turma > Cadastrar
+SIDUC - Escola > Cadastro > Turma > Cadastrar
 
 **DESCRIÇÃO:**
 
@@ -79,7 +79,7 @@ segurança de todos que utilizam a plataforma em seu estado atual.
 
 ### Indicando melhorias
 
-Outra ótima forma de contribuir é indicando melhorias ao código do Yazo Educacional e em
+Outra ótima forma de contribuir é indicando melhorias ao código do SIDUC e em
 como ele está estruturado. Se você tem qualquer ideia de como podemos melhorar
 alguma abordagem na solução de problemas, refatoração de código, melhoria em
 algum recurso ou qualquer outra coisa relacionada, siga estes passos:
@@ -112,7 +112,7 @@ apenas se:
    direto com a utilização da plataforma: secretários, gestores, professores,
    alunos, etc.
 
-Um exemplo de um bom recurso implementado para o Yazo Educacional é o módulo do **censo
+Um exemplo de um bom recurso implementado para o SIDUC é o módulo do **censo
 escolar** que visa resolver todo o processo de exportação de dados para o censo
 escolar com apenas alguns cliques, otimizando de forma radical este processo que
 antes poderia demorar semanas envolvendo o trabalho de muitas pessoas.
@@ -143,7 +143,7 @@ interação com os outros membros da comunidade.
 ### Fazendo pull requests
 
 Depois de ter um plano de ação relativamente claro você deve estar pronto para
-contribuir com código. Para isso faça um fork do Yazo Educacional e trabalhe em cima de
+contribuir com código. Para isso faça um fork do SIDUC e trabalhe em cima de
 um branch diferente de master implementando suas soluções. Para saber mais sobre
 pull requests e como eles funcionam, veja
 [este link](https://help.github.com/articles/about-pull-requests/).
@@ -186,12 +186,12 @@ entender melhor sobre esta decisão veja
 
 ### Outras formas de contribuir
 
-Se você não trabalha com código mas quer ajudar o Yazo Educacional, existe muitas outras
+Se você não trabalha com código mas quer ajudar o SIDUC, existe muitas outras
 formas de contribuir:
 
 - Ajude com a documentação do projeto (mais informações em breve);
-- Fale sobre o Yazo Educacional nas suas redes sociais, blogs, etc. Espalhe a palavra;
-- Organize eventos e dê palestras sobre o Yazo Educacional;
+- Fale sobre o SIDUC nas suas redes sociais, blogs, etc. Espalhe a palavra;
+- Organize eventos e dê palestras sobre o SIDUC;
 - Crie material promocional como apresentações, screencasts, mídia para
   compartilhamento em redes sociais, etc;
 - Viu alguma discussão que te interessa e onde você pode acrescentar mesmo sem

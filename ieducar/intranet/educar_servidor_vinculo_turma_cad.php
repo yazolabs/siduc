@@ -639,7 +639,7 @@ return new class extends clsCadastro
         }
 
         if (is_array($tipoAtendimento) && !in_array(TipoAtendimentoTurma::CURRICULAR_ETAPA_ENSINO, $tipoAtendimento) && $this->funcao_exercida == FuncaoExercida::AUXILIAR_EDUCACIONAL) {
-            $this->mensagem = 'O campo: <b>Função que exerce na turma</b> não pode ser: <b>Auxiliar/Assistente Educacional</b> quando o tipo da turma for: <b>' . TipoAtendimentoTurma::getDescription($tipoAtendimento) . '</b>';
+            $this->mensagem = 'O campo: <b>Função que exerce na turma</b> não pode ser: <b>Auxiliar/Assistente SIDUC</b> quando o tipo da turma for: <b>' . TipoAtendimentoTurma::getDescription($tipoAtendimento) . '</b>';
 
             return false;
         }

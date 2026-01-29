@@ -194,7 +194,7 @@ return new class extends clsCadastro
         ]);
 
         $this->inputsHelper()->booleanSelect(attrName: 'active_on_ieducar', inputOptions: [
-            'label' => 'Ativo no sistema Educacional?',
+            'label' => 'Ativo no sistema SIDUC?',
             'value' => $this->active_on_ieducar,
             'required' => true,
         ]);

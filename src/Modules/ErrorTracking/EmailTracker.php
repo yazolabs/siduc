@@ -12,7 +12,7 @@ class EmailTracker implements Tracker
 {
     public function notify(Throwable $exception, $data = [])
     {
-        $subject = '[Erro inesperado] Educacional - ' . config('app.name');
+        $subject = '[Erro inesperado] SIDUC - ' . config('app.name');
 
         $to = $this->getRecipient();
 

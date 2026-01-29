@@ -280,7 +280,7 @@ return new class extends clsCadastro
 
         $this->campoCheck(nome: 'importar_curso_pre_matricula', campo: 'Importar os dados do curso para o recurso de pré-matrícula digital?', valor: $this->importar_curso_pre_matricula);
 
-        $this->campoCheck(nome: 'bloquear_novas_matriculas', campo: 'Bloquear matrículas realizadas através do sistema Educacional?', valor: $this->bloquear_novas_matriculas);
+        $this->campoCheck(nome: 'bloquear_novas_matriculas', campo: 'Bloquear matrículas realizadas através do sistema SIDUC?', valor: $this->bloquear_novas_matriculas);
     }
 
     public function Novo()

@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ url('favicon.ico') }}" />
-    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - Educacional</title>
+    <title>@if(isset($title)) {!! html_entity_decode($title) !!} - @endif {{ html_entity_decode(config('legacy.app.entity.name')) }} - SIDUC</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="{{ Asset::get('css/vue-multiselect.min.css') }}">
     <link rel="stylesheet" href="{{ Asset::get('intranet/styles/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ Asset::get('css/base.css') }}">
+    <link rel="stylesheet" href="{{ Asset::get('css/brand-overrides.css') }}">
     @stack('styles')
     @stack('scripts')
     @stack('head')
@@ -18,7 +19,7 @@
 <div class="ieducar-container">
     <header class="ieducar-header">
         <div class="ieducar-header-logo">
-            <h1><a href="{{ Asset::get('/') }}">Educacional</a></h1>
+            <h1><a href="{{ Asset::get('/') }}">SIDUC</a></h1>
         </div>
         <div class="ieducar-header-links">
             <div class="dropdown">

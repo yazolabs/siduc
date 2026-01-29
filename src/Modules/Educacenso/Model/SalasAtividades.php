@@ -30,7 +30,7 @@ class SalasAtividades
             self::MUSICA => 'Sala de música/coral',
             self::ESTUDIO_DANCA => 'Sala/estúdio de dança',
             self::MULTIUSO => 'Sala multiúso (música, dança e artes)',
-            self::RECURSOS_AEE => 'Sala de recursos multifuncionais para Atendimento Educacional Especializado (AEE)',
+            self::RECURSOS_AEE => 'Sala de recursos multifuncionais para Atendimento SIDUC Especializado (AEE)',
             self::REPOUSO_ALUNO => 'Sala de repouso para aluno(a)',
             self::EDUCACAO_PROFISSIONAL => 'Salas de oficinas da educação profissional',
             self::ESTUDIO_GRAVACAO_EDICAO => 'Estúdio de gravação e edição',

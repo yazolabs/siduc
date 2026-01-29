@@ -242,7 +242,7 @@ return new class extends clsCadastro
             $this->campoRotulo(
                 nome: 'informativo1-alocacoes-vinculos',
                 campo: '
-                    Ao definir um novo ano letivo, o Educacional copia automaticamente as turmas do ano anterior. <br>
+                    Ao definir um novo ano letivo, o SIDUC copia automaticamente as turmas do ano anterior. <br>
                     Gostaria de copiar também as alocações e vínculos?
                 ',
                 separador: null

@@ -9,7 +9,7 @@ return [
     |
     | This value determines which application is running. Default is the new
     | version using Laravel structure. Another case your application is running
-    | using Yazo Educacional legacy code.
+    | using SIDUC legacy code.
     |
     */
 
@@ -44,7 +44,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | List of paths that contains migrations of the other repositories or
-    | packages that works with Yazo Educacional.
+    | packages that works with SIDUC.
     |
     */
 
@@ -66,7 +66,7 @@ return [
     ],
 
     'app' => [
-        'name' => env('APP_NAME', 'Educacional'),
+        'name' => env('APP_NAME', 'SIDUC'),
         'diario' => [
             'nomenclatura_exame' => '0',
         ],
@@ -91,7 +91,7 @@ return [
                 'instituicao' => 'Prefeitura Municipal',
             ],
             'pdf' => [
-                'titulo' => 'Relatório Educacional',
+                'titulo' => 'Relatório SIDUC',
                 'logo' => '',
             ],
             'layout' => 'login.tpl',
