@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DashboardSsoController;
 use App\Http\Controllers\EnrollmentInepController;
 use App\Http\Controllers\EnrollmentsPromotionController;
 use App\Http\Controllers\ExportController;
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
+
+Route::prefix('api/dashboard-sso')->middleware(['web'])->group(function () {
+    Route::get('/me', [DashboardSsoController::class, 'me']);
+    Route::post('/logout', [DashboardSsoController::class, 'logout']);
+});
 
 Route::redirect('/', '/web');
 

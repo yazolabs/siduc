@@ -27,6 +27,8 @@ services:
     restart: none
     volumes:
       - ./:/var/www/ieducar
+    networks:
+      - siduc-dev
 
   fpm:
     <<: *php
@@ -35,6 +37,8 @@ services:
     restart: none
     volumes:
       - ./:/var/www/ieducar
+    networks:
+      - siduc-dev
 
   horizon:
     <<: *php
@@ -43,6 +47,8 @@ services:
     restart: none
     volumes:
       - ./:/var/www/ieducar
+    networks:
+      - siduc-dev
 
   nginx:
     container_name: siduc-nginx
@@ -62,6 +68,8 @@ services:
       timeout: 5s
       retries: 3
       start_period: 30s
+    networks:
+      - siduc-dev
 
   postgres:
     container_name: siduc-postgres
@@ -75,6 +83,8 @@ services:
       - ieducar_postgres_data:/var/lib/postgresql/data
     ports:
       - "5442:5432"
+    networks:
+      - siduc-dev
 
   redis:
     container_name: siduc-redis
@@ -82,6 +92,8 @@ services:
     restart: none
     ports:
       - ${DOCKER_REDIS_PORT:-6379}:6379
+    networks:
+      - siduc-dev
 
   pmd:
     container_name: siduc-pmd
@@ -92,6 +104,12 @@ services:
     volumes:
       - ./packages/portabilis/pre-matricula-digital:/var/www/pre-matricula-digital
     working_dir: /var/www/pre-matricula-digital
+    networks:
+      - siduc-dev
 
 volumes:
   ieducar_postgres_data:
+
+networks:
+  siduc-dev:
+    external: true

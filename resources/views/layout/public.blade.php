@@ -50,8 +50,7 @@
 <div id="main">
 
     <div>
-        <h1 style="font-size: 2.5rem; font-weight: 800;">Bem-vindo</h1>
-        <img alt="Logo" style="width: 200px" src="/img/siduc-logo-tagline.png" >
+        <img alt="Logo" style="width: 250px" src="/img/siduc-logo-tagline.png" >
     </div>
 
     <h1>{{ config('legacy.config.ieducar_entity_name') }}</h1>
@@ -72,7 +71,7 @@
 
 <div id="footer">
     <div style="display: flex; align-items: center; justify-content: center;">
-        {{-- <span style="padding: 0px 10px">Adapted by</span> <img src="/img/logo-tagline.svg" alt="logo-yazo" style="width: 10%; height: 10%;"> --}}
+        {{-- <span style="padding: 0px 10px">Adapted by</span> <img src="/img/eedu-logo-tagline.png" alt="logo-eedu" style="width: 10%; height: 10%;"> --}}
         <span style="padding: 0px 10px"></span>
     </div>
     {{-- <div>

@@ -45,4 +45,7 @@ return [
         'label' => env('PASSPORT_LABEL', 'Single sign-on (SSO)'),
     ],
 
+    'siduc_dashboard' => [
+        'url' => env('SIDUC_DASHBOARD_URL'),
+    ],
 ];

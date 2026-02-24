@@ -80,6 +80,11 @@ services:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       PGUSER: ${DB_USERNAME}
+    networks:
+      default: {}
+      siduc-shared:
+        aliases:
+          - siduc-postgres
     volumes:
       - ieducar_postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -100,3 +105,8 @@ services:
 
 volumes:
   ieducar_postgres_data:
+
+networks:
+  siduc-shared:
+    external: true
+    name: siduc-shared

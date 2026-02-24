@@ -105,9 +105,7 @@
                     <h1 style="display: flex; align-items: center;">
                         <a href="{{ Asset::get('/') }}" 
                             style="display: flex; align-items: center; text-decoration: none; color: inherit; border-radius: 6px; transition: all 0.2s ease;">
-                            <img src="/img/siduc-logo-tagline.png" alt="logo-siduc" style="width: 10%; height: 10%; padding-right: 10px;">
-                            {{-- SIDUC --}}
-                            SIDUC
+                            <img src="/img/siduc-logo-tagline-white.png" alt="logo-siduc" style="width: 20%; height: 20%; padding: 5px 0px 0px 20px;">
                         </a>
                     </h1>
                 </div>
